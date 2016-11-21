@@ -32,4 +32,16 @@ extension MainModuleController: MainModuleViewOutput {
     func moduleDidLoad() {
         //
     }
+    
+    func didSelectItemAtIndex(index : Int) {
+        
+    }
+    
+    func moveItem(fromIndex: Int, toIndex: Int) {
+        
+    }
+    
+    func editButtonDidTap() {
+        
+    }
 }

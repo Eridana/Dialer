@@ -166,10 +166,10 @@
 		3FAC62041DE326E0000B06E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */,
 				3FAC62051DE326E0000B06E5 /* MainModuleController.swift */,
 				3FAC62061DE326E0000B06E5 /* MainModuleInteractor.swift */,
 				3FAC62071DE326E0000B06E5 /* MainModuleRouter.swift */,
+				3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";

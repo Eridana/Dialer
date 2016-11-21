@@ -13,15 +13,19 @@ import UIKit
 protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
+    func callNumber(phoneNumber : String)
 }
 
 protocol MainModuleViewOutput: class {
     func moduleDidLoad()
+    func didSelectItemAtIndex(index : Int)
+    func moveItem(fromIndex : Int, toIndex : Int)
+    func editButtonDidTap()
 }
 
 
 // MARK: - View Controller
-final class MainModuleViewController: UIViewController {
+final class MainModuleViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -36,7 +40,24 @@ final class MainModuleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = dataSource
+        collectionView.delegate = self
+        dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
+            self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
+        })
         output.moduleDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dataSource.setScreenSize(size: self.view.frame.size)
+    }
+    
+    // MARK : Events
+    
+    
+    // MARK: UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        output.didSelectItemAtIndex(index: indexPath.item)
     }
 }
 
@@ -51,6 +72,10 @@ extension MainModuleViewController: MainModuleViewInput {
     }
     
     func update(withError error: String) {
+        
+    }
+    
+    func callNumber(phoneNumber: String) {
         
     }
 }
