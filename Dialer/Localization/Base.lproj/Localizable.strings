@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Dialer
+
+  Created by Женя Михайлова on 19.11.16.
+  Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
+*/
+
+"item_not_set_title_text" = "Not mapped";
