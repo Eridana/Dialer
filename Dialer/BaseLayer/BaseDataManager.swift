@@ -6,9 +6,9 @@
 //  Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
 //
 
-import UIKit
+import Result
 
 protocol BaseDataManager: class {
     func save(array:[BaseObject]) -> Bool
-    //func load(_ result: @escaping (Result<[PhoneObject], NSError>) -> ())
+    func load(_ result: @escaping (Result<[BaseObject], NSError>) -> ())
 }

@@ -25,6 +25,7 @@
 		3FAC62161DE326E0000B06E5 /* MainModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC620C1DE326E0000B06E5 /* MainModuleView.swift */; };
 		3FAC62171DE326E0000B06E5 /* MainModuleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC620D1DE326E0000B06E5 /* MainModuleViewController.xib */; };
 		3FAC621A1DE3271F000B06E5 /* PhoneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62191DE3271F000B06E5 /* PhoneObject.swift */; };
+		4B3DEF859DA2C1D8A5D925D8 /* Pods_Dialer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,9 @@
 		3FAC620C1DE326E0000B06E5 /* MainModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleView.swift; sourceTree = "<group>"; };
 		3FAC620D1DE326E0000B06E5 /* MainModuleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleViewController.xib; sourceTree = "<group>"; };
 		3FAC62191DE3271F000B06E5 /* PhoneObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneObject.swift; sourceTree = "<group>"; };
+		66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.debug.xcconfig"; sourceTree = "<group>"; };
+		8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.release.xcconfig"; sourceTree = "<group>"; };
+		B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3DEF859DA2C1D8A5D925D8 /* Pods_Dialer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,8 @@
 			children = (
 				3FAC61921DE2E745000B06E5 /* Dialer */,
 				3FAC61911DE2E745000B06E5 /* Products */,
+				EE53B611490C0D3A97621C7C /* Pods */,
+				F5255077970F50FBC07545FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,6 +191,23 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		EE53B611490C0D3A97621C7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */,
+				8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F5255077970F50FBC07545FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,9 +215,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FAC61A21DE2E745000B06E5 /* Build configuration list for PBXNativeTarget "Dialer" */;
 			buildPhases = (
+				8B98BB3B00AF717A9AA8B276 /* [CP] Check Pods Manifest.lock */,
 				3FAC618C1DE2E744000B06E5 /* Sources */,
 				3FAC618D1DE2E744000B06E5 /* Frameworks */,
 				3FAC618E1DE2E744000B06E5 /* Resources */,
+				EE1CDBB30B52E79AC2E02E7D /* [CP] Embed Pods Frameworks */,
+				B9D3BC68688E61AD60938689 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +281,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B98BB3B00AF717A9AA8B276 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9D3BC68688E61AD60938689 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dialer/Pods-Dialer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE1CDBB30B52E79AC2E02E7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dialer/Pods-Dialer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3FAC618C1DE2E744000B06E5 /* Sources */ = {
@@ -392,6 +467,7 @@
 		};
 		3FAC61A31DE2E745000B06E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9377R37M3Q;
@@ -405,6 +481,7 @@
 		};
 		3FAC61A41DE2E745000B06E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9377R37M3Q;
