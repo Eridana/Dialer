@@ -9,7 +9,7 @@ import UIKit
 
 final class MainModuleAssembly
 {
-	class func createModule(configure: (_ module: MainModuleModuleInput) -> Void) -> UITableViewController {
+	class func createModule(configure: (_ module: MainModuleModuleInput) -> Void) -> UIViewController {
 	
 		let view = MainModuleViewController(nibName: "MainModuleViewController", bundle: nil)
 	

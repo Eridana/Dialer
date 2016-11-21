@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainModuleTableDataSource: NSObject {
+final class MainModuleCollectionViewDataSource: NSObject {
     var data: [PhoneDomainModel]?
     
     func update(data: [PhoneDomainModel]?) {
@@ -22,22 +22,22 @@ final class MainModuleTableDataSource: NSObject {
     }
 }
 
-extension MainModuleTableDataSource: UITableViewDataSource {
+extension MainModuleCollectionViewDataSource: UICollectionViewDataSource {
     
     // MARK: Sections
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    // MARK: Rows
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: Items
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let item = item(forIndexPath: indexPath),
-            let cell = tableView.dequeueReusableCell(withIdentifier: MainModuleTableViewCell.reuseIdentifier) as? MainModuleTableViewCell
-        else { return UITableViewCell() }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainModuleCollectionViewCell.reuseIdentifier, for: indexPath) as? MainModuleCollectionViewCell
+            else { return UICollectionViewCell() }
         
         cell.fill(withData: item)
         return cell

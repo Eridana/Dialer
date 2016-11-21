@@ -21,10 +21,12 @@ protocol MainModuleViewOutput: class {
 
 
 // MARK: - View Controller
-final class MainModuleViewController: UITableViewController {
+final class MainModuleViewController: UIViewController {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var output: MainModuleViewOutput!
-    var dataSource = MainModuleTableDataSource()    
+    var dataSource = MainModuleCollectionViewDataSource()
     
     // MARK: - Life cycle
     func configure() {
@@ -33,7 +35,7 @@ final class MainModuleViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = dataSource
+        collectionView.dataSource = dataSource
         output.moduleDidLoad()
     }
 }
@@ -44,7 +46,7 @@ extension MainModuleViewController: MainModuleViewInput {
     
     func update(withData data: [PhoneDomainModel]) { 
         dataSource.update(data: data)
-        tableView.reloadData()
+        collectionView.reloadData()
         
     }
     
