@@ -17,9 +17,12 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     
     func fill(withData data: PhoneDomainModel) {
         /*Fill data with model*/
-        let mapped = data.mapped ?? false
-        name.text = mapped ? data.displayedName : NSLocalizedString("item_not_set_title_text", comment: "item did not set")
-        phone.text = mapped ? data.phoneNumber : ""
+        guard data.mapped != nil else {
+            name.text = NSLocalizedString("item_not_set_title_text", comment: "item did not set")
+            return
+        }
+        name.text = data.displayedName
+        phone.text = data.phoneNumber
     }
     
     override func prepareForReuse() {
