@@ -25,6 +25,7 @@
 		3FAC621A1DE3271F000B06E5 /* PhoneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62191DE3271F000B06E5 /* PhoneObject.swift */; };
 		3FAC621D1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC621B1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift */; };
 		3FAC621E1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC621C1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib */; };
+		3FAC62221DE32ED7000B06E5 /* MainModuleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */; };
 		4B3DEF859DA2C1D8A5D925D8 /* Pods_Dialer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		3FAC62191DE3271F000B06E5 /* PhoneObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneObject.swift; sourceTree = "<group>"; };
 		3FAC621B1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FAC621C1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleCollectionViewCell.xib; sourceTree = "<group>"; };
+		3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleDataManager.swift; sourceTree = "<group>"; };
 		66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.debug.xcconfig"; sourceTree = "<group>"; };
 		8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.release.xcconfig"; sourceTree = "<group>"; };
 		B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +166,7 @@
 		3FAC62041DE326E0000B06E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */,
 				3FAC62051DE326E0000B06E5 /* MainModuleController.swift */,
 				3FAC62061DE326E0000B06E5 /* MainModuleInteractor.swift */,
 				3FAC62071DE326E0000B06E5 /* MainModuleRouter.swift */,
@@ -343,6 +346,7 @@
 				3FAC62161DE326E0000B06E5 /* MainModuleView.swift in Sources */,
 				3FAC62101DE326E0000B06E5 /* MainModuleController.swift in Sources */,
 				3FAC621A1DE3271F000B06E5 /* PhoneObject.swift in Sources */,
+				3FAC62221DE32ED7000B06E5 /* MainModuleDataManager.swift in Sources */,
 				3FAC621D1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift in Sources */,
 				3FAC62001DE325CD000B06E5 /* BaseObject.swift in Sources */,
 				3FAC620F1DE326E0000B06E5 /* MainModuleInterface.swift in Sources */,
