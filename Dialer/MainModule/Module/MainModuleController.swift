@@ -6,6 +6,7 @@
 //  Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
 //
 
+import Result
 
 // MARK: - Controller
 final class MainModuleController: MainModuleModuleInput {
@@ -14,6 +15,7 @@ final class MainModuleController: MainModuleModuleInput {
     var router: MainModuleRouterInput!
     weak var view: MainModuleViewInput!
     weak var output: MainModuleModuleOutput?
+    var data : [PhoneDomainModel]?
 
     // MARK: - Module Input
     func setupDelegate(output: MainModuleModuleOutput) {
@@ -23,18 +25,25 @@ final class MainModuleController: MainModuleModuleInput {
 
 // MARK: - Interactor Output
 extension MainModuleController: MainModuleInteractorOutput {
-    
+    func callPhoneNumber(number : String) {
+        self.view.callPhoneNumber(number : number)
+    }
 }
 
 // MARK: - View Output
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        //
+        self.interactor.requestData { (result) in
+            switch result {
+                case .success(let data) : self.view.update(withData:data)
+                case .failure(let error): self.view.update(withError:error.description)
+            }
+        }
     }
     
     func didSelectItemAtIndex(index : Int) {
-        
+        self.interactor.possibleCallPhoneNumberFor(data: self.data![index])
     }
     
     func moveItem(fromIndex: Int, toIndex: Int) {

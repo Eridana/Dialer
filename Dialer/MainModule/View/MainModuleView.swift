@@ -13,7 +13,7 @@ import UIKit
 protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
-    func callNumber(phoneNumber : String)
+    func callPhoneNumber(number : String)
 }
 
 protocol MainModuleViewOutput: class {
@@ -75,7 +75,13 @@ extension MainModuleViewController: MainModuleViewInput {
         
     }
     
-    func callNumber(phoneNumber: String) {
-        
+    func callPhoneNumber(number: String) {
+        if let url = URL(string: "telprompt://\(number.replacingOccurrences(of: " ", with: ""))"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler:nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
     }
 }
