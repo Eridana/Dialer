@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainModuleViewController" customModule="Dialer" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="BFy-SB-laU" id="AQj-z3-7cG"/>
+                <outlet property="collectionView" destination="zT7-04-1X1" id="xdI-bQ-pYv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,9 +17,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BFy-SB-laU">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zT7-04-1X1">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ohe-7i-EMB">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PDt-cc-87b">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -29,10 +29,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="BFy-SB-laU" secondAttribute="bottom" id="AWK-Ls-aZN"/>
-                <constraint firstItem="BFy-SB-laU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Azc-dN-BH6"/>
-                <constraint firstItem="BFy-SB-laU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cSh-GA-dHc"/>
-                <constraint firstAttribute="trailing" secondItem="BFy-SB-laU" secondAttribute="trailing" id="xhW-IL-OEj"/>
+                <constraint firstAttribute="bottom" secondItem="zT7-04-1X1" secondAttribute="bottom" id="ROl-gY-BNj"/>
+                <constraint firstItem="zT7-04-1X1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gDE-J5-CA0"/>
+                <constraint firstItem="zT7-04-1X1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nrb-9I-Xdm"/>
+                <constraint firstAttribute="trailing" secondItem="zT7-04-1X1" secondAttribute="trailing" id="yyA-K0-jh1"/>
             </constraints>
             <point key="canvasLocation" x="25.5" y="51.5"/>
         </view>

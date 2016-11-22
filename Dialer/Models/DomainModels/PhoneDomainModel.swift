@@ -14,4 +14,11 @@ class PhoneDomainModel: NSObject {
     var phoneNumber : String?
     var displayedName : String?
     var mapped : Bool?
+    
+    init(index : Int?, phoneNumber : String?, displayedName : String?, mapped: Bool?) {
+        self.index = index
+        self.phoneNumber = phoneNumber
+        self.displayedName = displayedName
+        self.mapped = mapped
+    }
 }

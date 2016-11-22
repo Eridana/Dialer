@@ -23,6 +23,7 @@ protocol MainModuleInteractorOutput: class {
 // MARK: - Interactor
 final class MainModuleInteractor: MainModuleInteractorInput {
     weak var output: MainModuleInteractorOutput!
+    weak var dataSource : PhoneNumbersDataSourceInterface!
 
     func possibleCallPhoneNumberFor(data: PhoneDomainModel) {
         if (data.mapped ?? false) {
@@ -31,8 +32,13 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     }
     
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ()) {
-        
+        dataSource.load { (loadedResult) in
+            result(loadedResult)
+//            switch loadedResult {
+//                case .success(let data) : self.result.success(data)
+//                case .failure(let error):
+            }
     }
-    
 }
+
 

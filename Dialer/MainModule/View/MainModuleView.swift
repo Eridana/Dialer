@@ -43,7 +43,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         collectionView.delegate = self
         dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
             self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
-        })
+            })
         output.moduleDidLoad()
     }
     
@@ -62,10 +62,10 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
 }
 
 
-// MARK: - View Input 
+// MARK: - View Input
 extension MainModuleViewController: MainModuleViewInput {
     
-    func update(withData data: [PhoneDomainModel]) { 
+    func update(withData data: [PhoneDomainModel]) {
         dataSource.update(data: data)
         collectionView.reloadData()
         
