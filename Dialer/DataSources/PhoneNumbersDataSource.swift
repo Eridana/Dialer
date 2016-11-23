@@ -10,14 +10,14 @@ import Result
 
 class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
 
-    let defaultFileName = "savedData"
+    let defaultsKeyName = "savedData"
     
     func save(array:[PhoneDomainModel]) -> Bool {
-        return saveArrayToFileWithName(fileName: defaultFileName, array: array)
+        return saveArrayToDefaultsWithKey(key: defaultsKeyName, array: array)
     }
     
     func load(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ()) {
-        if let array = arrayFromContentsOfFileWithName(fileName: defaultFileName) as [PhoneEntity]? {
+        if let array = arrayFromDefaultsWithKey(key: defaultsKeyName) as [PhoneEntity]? {
             if let convertedData = convertToModels(entities: array) as [PhoneDomainModel]? {
                 result(.success(convertedData))
             } else {
@@ -73,46 +73,34 @@ class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
         return nil
     }
     
-    private func saveArrayToFileWithName(fileName : String, array: [PhoneDomainModel]) -> Bool {
+    private func saveArrayToDefaultsWithKey(key : String, array: [PhoneDomainModel]) -> Bool {
         
         guard let data = convertToEntities(models: array) else {
             return false
         }
-        return saveArrayToFileWithName(fileName: fileName, array: data)
+        return saveArrayToDefaultsWithKey(key: key, array: data)
     }
     
-    private func saveArrayToFileWithName(fileName : String, array: [PhoneEntity]) -> Bool {
+    private func saveArrayToDefaultsWithKey(key : String, array: [PhoneEntity]) -> Bool {
         
-        let docDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        if let fileURL = docDirectory?.appendingPathComponent(fileName).appendingPathExtension("txt") {
-            do {
-                let data = NSKeyedArchiver.archivedData(withRootObject: array)
-                try data.write(to: fileURL)
-            } catch {
-                print("Failed writing to path: \(fileURL), Error: " + error.localizedDescription)
-                return false
-            }
-        }
-        
+        let data = NSKeyedArchiver.archivedData(withRootObject: array)
+        UserDefaults.standard.set(data, forKey: key)
         return true
     }
     
-    private func arrayFromContentsOfFileWithName(fileName: String) -> [PhoneEntity]? {
+    
+    private func arrayFromDefaultsWithKey(key: String) -> [PhoneEntity]? {
         
         var savedArray : [PhoneEntity]?
+
+        let arrayData = UserDefaults.standard.value(forKey: key) as? Data
         
-        let docDirectory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        if let fileURL = docDirectory?.appendingPathComponent(fileName).appendingPathExtension("txt") {
-            
-            do {
-                let arrayData = try Data(contentsOf: fileURL)
-                savedArray = NSKeyedUnarchiver.unarchiveObject(with: arrayData) as? [PhoneEntity]
-            } catch {
-                print("Failed reading from path: \(fileURL), Error: " + error.localizedDescription)
-                return nil;
-            }            
+        guard let data = arrayData else {
+            print("Data is nil")
+            return nil
         }
         
+        savedArray = NSKeyedUnarchiver.unarchiveObject(with: data) as? [PhoneEntity]
         return savedArray
     }
 }
