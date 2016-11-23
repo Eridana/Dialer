@@ -21,13 +21,51 @@ class PhoneNumbersDataSourceTests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.dataSource = nil;
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLoadObjects() {
+        // after first load there should be 12 objects with mapped = false
+        let count = 12
+       // let testExpectation = expectation(description: "Load phoneobjects")
         
+        dataSource?.load({ (result) in
+           // testExpectation.fulfill()
+            switch result {
+            case .success(let data):
+                XCTAssertNotNil(data)
+                XCTAssert(data.count == count)
+            case .failure(let error):
+                XCTFail()
+            }
+        })
+        
+//        waitForExpectations(timeout: 5) { error in
+//            XCTFail()
+//        }
+    }
+    
+    func testCreateObjects() {
+        
+        let count = 12
+        let data = dataSource?.createObjects(count: count)
+        
+        XCTAssertNotNil(data)
+        XCTAssert(data != nil && data!.count == count)
+    }
+    
+    func testSaveObjects() {
+        
+        let count = 12
+        let data = dataSource?.createObjects(count: count)
+        
+        XCTAssertNotNil(data)
+        XCTAssert(data != nil && data!.count == count)
+        
+        let saved = dataSource?.save(array: data!)
+        
+        XCTAssert(saved == true)
     }
     
     func testPerformanceExample() {

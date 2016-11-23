@@ -11,16 +11,18 @@ import Contacts
 
 class PhoneEntity : NSObject, NSCoding {
     
-    var index : Int?
+    var index : Int
     var phoneNumber : String?
     var displayedName : String?
-    var mapped : Bool?
+    var mapped : Bool
     
     override init() {
-        super.init()
+        self.index = 0
+        self.mapped = false
+        super.init()        
     }
     
-    init(index : Int?, phoneNumber : String?, displayedName : String?, mapped: Bool?) {
+    init(index : Int, phoneNumber : String?, displayedName : String?, mapped: Bool) {
         self.index = index
         self.phoneNumber = phoneNumber
         self.displayedName = displayedName
