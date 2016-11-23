@@ -25,27 +25,6 @@ class PhoneNumbersDataSourceTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoadObjects() {
-        // after first load there should be 12 objects with mapped = false
-        let count = 12
-       // let testExpectation = expectation(description: "Load phoneobjects")
-        
-        dataSource?.load({ (result) in
-           // testExpectation.fulfill()
-            switch result {
-            case .success(let data):
-                XCTAssertNotNil(data)
-                XCTAssert(data.count == count)
-            case .failure(let error):
-                XCTFail()
-            }
-        })
-        
-//        waitForExpectations(timeout: 5) { error in
-//            XCTFail()
-//        }
-    }
-    
     func testCreateObjects() {
         
         let count = 12
@@ -68,11 +47,32 @@ class PhoneNumbersDataSourceTests: XCTestCase {
         XCTAssert(saved == true)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testLoadObjects() {
+
+        let count = 12
+       // let testExpectation = expectation(description: "Load phoneobjects")
+        let data = dataSource?.createObjects(count: count)
+        
+        XCTAssertNotNil(data)
+        XCTAssert(data != nil && data!.count == count)
+        
+        let saved = dataSource?.save(array: data!)
+        XCTAssert(saved == true)
+        
+        dataSource?.load({ (result) in
+           // testExpectation.fulfill()
+            switch result {
+            case .success(let data):
+                XCTAssertNotNil(data)
+                XCTAssert(data.count == count)
+            case .failure(let error):
+                XCTFail()
+            }
+        })
+        
+//        waitForExpectations(timeout: 5) { error in
+//            XCTFail()
+//        }
     }
     
 }
