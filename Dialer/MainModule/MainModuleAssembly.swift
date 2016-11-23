@@ -20,6 +20,7 @@ final class MainModuleAssembly
 		let router = MainModuleRouter()
 
 		interactor.output = controller
+        interactor.dataSource = PhoneNumbersDataSource()
 
 		controller.view = view
 		controller.interactor = interactor
@@ -33,6 +34,5 @@ final class MainModuleAssembly
 
 		return view
 	}
-  
 }
 

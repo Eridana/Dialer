@@ -1,5 +1,5 @@
 //
-//  PhonePlainObject.swift
+//  PhoneEntity.swift
 //  Dialer
 //
 //  Created by Женя Михайлова on 19.11.16.
@@ -9,17 +9,26 @@
 import UIKit
 import Contacts
 
-class PhoneEntity: BaseObject, NSCoding {
+class PhoneEntity : NSObject, NSCoding {
     
-    var index : Int?
+    var index : Int
     var phoneNumber : String?
     var displayedName : String?
-    var mapped : Bool?
+    var mapped : Bool
     
     override init() {
-        super.init()
+        self.index = 0
+        self.mapped = false
+        super.init()        
     }
     
+    init(index : Int, phoneNumber : String?, displayedName : String?, mapped: Bool) {
+        self.index = index
+        self.phoneNumber = phoneNumber
+        self.displayedName = displayedName
+        self.mapped = mapped
+    }    
+
     required init?(coder aDecoder: NSCoder) {
         self.index = aDecoder.decodeInteger(forKey: "index")
         self.phoneNumber = aDecoder.decodeObject(forKey: "phoneNumber") as? String
