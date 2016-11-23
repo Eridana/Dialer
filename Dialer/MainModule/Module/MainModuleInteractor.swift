@@ -26,7 +26,7 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     weak var dataSource : PhoneNumbersDataSourceInterface!
 
     func possibleCallPhoneNumberFor(data: PhoneDomainModel) {
-        if (data.mapped ?? false) {
+        if (data.mapped) {
             output.callPhoneNumber(number : data.phoneNumber!)
         }
     }
@@ -34,10 +34,7 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ()) {
         dataSource.load { (loadedResult) in
             result(loadedResult)
-//            switch loadedResult {
-//                case .success(let data) : self.result.success(data)
-//                case .failure(let error):
-            }
+        }
     }
 }
 
