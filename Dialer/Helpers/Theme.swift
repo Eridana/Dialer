@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum ThemeType {
+enum ThemeType : String {
     case Dark
     case Light
 }
