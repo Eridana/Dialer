@@ -26,5 +26,5 @@ struct Style {
     static let lightNotMappedTextColor = UIColor.init(rgbColorCodeRed: 150, green: 150, blue: 150, alpha: 1)
     static let lightNotMappedBorderColor = UIColor.init(rgbColorCodeRed: 150, green: 150, blue: 150, alpha: 1)
     static let lightMappedBorderColor = UIColor.black
-    static let lightBackgroundImageName = "lightBg"
+    static let lightBackgroundImageName = "lightBackground"
 }
