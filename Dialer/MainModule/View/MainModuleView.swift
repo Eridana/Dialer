@@ -52,7 +52,6 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         
         self.localize()
         self.setupCollectionView()
-        self.setupTheme()
         
         editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
         themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
@@ -76,6 +75,12 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         topView.backgroundColor = Theme.current.collectionBgColor()
         collectionView.backgroundColor = Theme.current.collectionBgColor()
         UIApplication.shared.statusBarStyle = Theme.current.barStyle()
+        
+        if Theme.current.currentTheme == .Dark {
+            self.themeSegmentedControl.selectedSegmentIndex = 0
+        } else {
+            self.themeSegmentedControl.selectedSegmentIndex = 1
+        }
     }
     
     func setupCollectionView() {

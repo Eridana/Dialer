@@ -23,6 +23,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         name.text = data.mapped ? data.displayedName : NSLocalizedString("item_not_set_title_text", comment: "")
         phone.text = data.mapped ? data.phoneNumber : ""
         data.mapped ? configureCellAsMapped() : configureCellAsNotMapped()
+        roundedView.backgroundColor = Theme.current.cellBgColor()
     }
     
     func configureCellAsMapped() {
@@ -46,7 +47,6 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        roundedView.backgroundColor = Theme.current.cellBgColor()
         roundedView.layer.cornerRadius = 6.0
         roundedView.layer.borderWidth = 1.0
     }

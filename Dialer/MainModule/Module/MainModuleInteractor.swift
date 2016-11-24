@@ -14,6 +14,8 @@ protocol MainModuleInteractorInput: class {
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ())
     func setDataSource(dataSource : PhoneNumbersDataSourceInterface)
     func switchThemeFor(index: Int)
+    func saveCurrentTheme()
+    func loadSavedTheme()
 }
 
 //MARK: Output
@@ -26,7 +28,8 @@ protocol MainModuleInteractorOutput: class {
 final class MainModuleInteractor: MainModuleInteractorInput {
     weak var output: MainModuleInteractorOutput!
     var dataSource : PhoneNumbersDataSourceInterface!
-
+    var themesDataSource : ThemesDataSourceInterface!
+    
     func setDataSource(dataSource: PhoneNumbersDataSourceInterface) {
         self.dataSource = dataSource
     }
@@ -69,6 +72,18 @@ final class MainModuleInteractor: MainModuleInteractorInput {
             Theme.current.setCurrentTheme(theme: .Dark);
         } else {
             Theme.current.setCurrentTheme(theme: .Light);
+        }
+        self.saveCurrentTheme()
+        self.output?.reloadTheme()
+    }
+    
+    func saveCurrentTheme() {
+        self.themesDataSource?.saveTheme(theme: Theme.current.currentTheme)
+    }
+    
+    func loadSavedTheme() {
+        if let theme = themesDataSource?.loadTheme() {
+            Theme.current.setCurrentTheme(theme: theme)
         }
         self.output?.reloadTheme()
     }

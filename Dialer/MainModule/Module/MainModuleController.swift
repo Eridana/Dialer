@@ -39,6 +39,7 @@ extension MainModuleController: MainModuleInteractorOutput {
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
+        self.interactor.loadSavedTheme()
         self.interactor.requestData { [unowned self] (result) in
             switch result {
                 case .success(let data) :
