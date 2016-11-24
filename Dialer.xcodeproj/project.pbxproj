@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */; };
 		3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */; };
 		3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812111DE6B9D8005B8EDC /* Style.swift */; };
 		3F3812141DE6C067005B8EDC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812131DE6C067005B8EDC /* Theme.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInteractorTests.swift; sourceTree = "<group>"; };
 		3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Rgb.swift"; sourceTree = "<group>"; };
 		3F3812111DE6B9D8005B8EDC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		3F3812131DE6C067005B8EDC /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		3FAC62371DE4859F000B06E5 /* DialerTests */ = {
 			isa = PBXGroup;
 			children = (
+				3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */,
 				3FAC62401DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift */,
 				3FAC62381DE4859F000B06E5 /* DialerTests.swift */,
 				3FAC623A1DE4859F000B06E5 /* Info.plist */,
@@ -458,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */,
 				3FAC62411DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift in Sources */,
 				3FAC62391DE4859F000B06E5 /* DialerTests.swift in Sources */,
 			);
