@@ -12,7 +12,7 @@ import Result
 protocol MainModuleInteractorInput: class {
     func possibleCallPhoneNumberFor(data : PhoneDomainModel)
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ())
-    
+    func setDataSource(dataSource : PhoneNumbersDataSourceInterface)
 }
 
 //MARK: Output
@@ -23,8 +23,12 @@ protocol MainModuleInteractorOutput: class {
 // MARK: - Interactor
 final class MainModuleInteractor: MainModuleInteractorInput {
     weak var output: MainModuleInteractorOutput!
-    weak var dataSource : PhoneNumbersDataSourceInterface!
+    var dataSource : PhoneNumbersDataSourceInterface!
 
+    func setDataSource(dataSource: PhoneNumbersDataSourceInterface) {
+        self.dataSource = dataSource
+    }
+    
     func possibleCallPhoneNumberFor(data: PhoneDomainModel) {
         if (data.mapped) {
             output.callPhoneNumber(number : data.phoneNumber!)
@@ -33,8 +37,29 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ()) {
         dataSource.load { (loadedResult) in
-            result(loadedResult)
+            
+            switch loadedResult {
+                
+            case .success(let data) :
+                
+                if data != nil {
+                    result(.success(data!))
+                }
+                else if let createdObjects = self.createObjects() {
+                    result(.success(createdObjects))
+                }
+                
+            case .failure(let error):
+                result(.failure(error))
+            }
         }
+    }
+    
+    func createObjects() -> [PhoneDomainModel]? {
+        let count = 12
+        let data = self.dataSource?.createObjects(count: count)
+        let saved = self.dataSource?.save(array: data!)
+        return saved ?? false ? data : nil
     }
 }
 

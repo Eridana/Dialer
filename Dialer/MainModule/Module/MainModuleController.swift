@@ -34,10 +34,13 @@ extension MainModuleController: MainModuleInteractorOutput {
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        self.interactor.requestData { (result) in
+        self.interactor.requestData { [unowned self] (result) in
             switch result {
-                case .success(let data) : self.view.update(withData:data)
-                case .failure(let error): self.view.update(withError:error.description)
+                case .success(let data) :
+                    self.data = data
+                    self.view.update(withData:data)
+                case .failure(let error):
+                    self.view.update(withError:error.description)
             }
         }
     }

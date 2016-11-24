@@ -19,8 +19,9 @@ final class MainModuleAssembly
 		let controller = MainModuleController()
 		let router = MainModuleRouter()
 
+        let dataSource = PhoneNumbersDataSource()
 		interactor.output = controller
-        interactor.dataSource = PhoneNumbersDataSource()
+        interactor.dataSource = dataSource
 
 		controller.view = view
 		controller.interactor = interactor

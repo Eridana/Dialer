@@ -64,7 +64,7 @@ class PhoneNumbersDataSourceTests: XCTestCase {
             switch result {
             case .success(let data):
                 XCTAssertNotNil(data)
-                XCTAssert(data.count == count)
+                XCTAssert(data?.count == count)
             case .failure(let error):
                 XCTFail()
             }
