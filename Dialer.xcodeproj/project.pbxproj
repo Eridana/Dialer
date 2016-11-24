@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */; };
+		3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812111DE6B9D8005B8EDC /* Style.swift */; };
+		3F3812141DE6C067005B8EDC /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812131DE6C067005B8EDC /* ThemeColor.swift */; };
 		3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61931DE2E745000B06E5 /* AppDelegate.swift */; };
 		3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619A1DE2E745000B06E5 /* Assets.xcassets */; };
 		3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */; };
@@ -43,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Rgb.swift"; sourceTree = "<group>"; };
+		3F3812111DE6B9D8005B8EDC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		3F3812131DE6C067005B8EDC /* ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		3FAC61901DE2E745000B06E5 /* Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dialer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC61931DE2E745000B06E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FAC619A1DE2E745000B06E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,6 +104,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3F3812101DE6B952005B8EDC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3F3812111DE6B9D8005B8EDC /* Style.swift */,
+				3F3812131DE6C067005B8EDC /* ThemeColor.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3FAC61871DE2E744000B06E5 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 			children = (
 				3FAC61931DE2E745000B06E5 /* AppDelegate.swift */,
 				3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */,
+				3F3812101DE6B952005B8EDC /* Helpers */,
 				3F38120D1DE6130B005B8EDC /* Extensions */,
 				3FAC622F1DE48531000B06E5 /* DataSources */,
 				3FAC61FC1DE325CD000B06E5 /* BaseLayer */,
@@ -427,12 +441,14 @@
 				3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */,
 				3FAC624B1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift in Sources */,
 				3FAC62101DE326E0000B06E5 /* MainModuleController.swift in Sources */,
+				3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */,
 				3FAC621A1DE3271F000B06E5 /* PhoneEntity.swift in Sources */,
 				3FAC621D1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift in Sources */,
 				3FAC620F1DE326E0000B06E5 /* MainModuleInterface.swift in Sources */,
 				3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */,
 				3FAC62131DE326E0000B06E5 /* MainModuleDataSource.swift in Sources */,
 				3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */,
+				3F3812141DE6C067005B8EDC /* ThemeColor.swift in Sources */,
 				3FAC62311DE4854A000B06E5 /* PhoneNumbersDataSource.swift in Sources */,
 				3FAC61FA1DE325B9000B06E5 /* PhoneDomainModel.swift in Sources */,
 			);

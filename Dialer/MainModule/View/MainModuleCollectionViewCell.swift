@@ -26,16 +26,16 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellAsMapped() {
-        roundedView.layer.borderColor = UIColor.white.cgColor
-        name.textColor = UIColor.white
-        phone.textColor = UIColor.white
-        name.textColor = UIColor.white
+        roundedView.layer.borderColor = Theme().mappedBorderColor().cgColor
+        name.textColor = Theme().mappedTextColor()
+        phone.textColor = Theme().mappedTextColor()
+        name.textColor = Theme().mappedTextColor()
     }
     
     func configureCellAsNotMapped() {
-        roundedView.layer.borderColor = UIColor.init(rgbColorCodeRed: 66, green: 66, blue: 73, alpha: 1).cgColor
-        index.textColor = UIColor.init(rgbColorCodeRed: 66, green: 66, blue: 73, alpha: 1)
-        name.textColor = UIColor.init(rgbColorCodeRed: 66, green: 66, blue: 73, alpha: 1)
+        roundedView.layer.borderColor = Theme().notMappedBorderColor().cgColor
+        index.textColor = Theme().notMappedTextColor()
+        name.textColor = Theme().notMappedTextColor()
     }
     
     override func prepareForReuse() {
@@ -46,7 +46,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentView.backgroundColor = UIColor.init(rgbColorCodeRed: 0, green: 0, blue: 0, alpha: 0.5)
+        contentView.backgroundColor = Theme().cellBgColor()
         roundedView.layer.cornerRadius = 6.0
         roundedView.layer.borderWidth = 1.0
     }

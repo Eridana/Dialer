@@ -53,7 +53,16 @@ extension MainModuleController: MainModuleViewOutput {
         
     }
     
-    func editButtonDidTap() {
-        
+    func editButtonTapped() {
+        self.view.editButtonDidTap()
+    }
+    
+    func themeSelectedWith(index: Int) {
+        if index == 0 {
+            Theme().setCurrentTheme(theme: .Dark);
+        } else {
+            Theme().setCurrentTheme(theme: .Light);
+        }
+        self.view.reloadTheme()
     }
 }

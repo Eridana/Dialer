@@ -9,6 +9,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainModuleViewController" customModule="Dialer" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="zT7-04-1X1" id="ShZ-L4-3lq"/>
+                <outlet property="editButton" destination="hT5-Xr-cD8" id="WA4-Ng-Mx9"/>
+                <outlet property="themeSegmentedControl" destination="T87-C2-e3V" id="rmW-gX-qRb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="tAj-9L-1ND"/>
             </connections>
         </placeholder>
@@ -46,9 +48,6 @@
                             </state>
                         </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="T87-C2-e3V">
-                            <constraints>
-                                <constraint firstAttribute="width" constant="160" id="gcp-Qv-RT0"/>
-                            </constraints>
                             <segments>
                                 <segment title="Dark"/>
                                 <segment title="Light"/>
