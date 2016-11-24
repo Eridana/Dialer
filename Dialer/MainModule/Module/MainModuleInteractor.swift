@@ -66,9 +66,9 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     
     func switchThemeFor(index: Int) {
         if index == 0 {
-            Theme().setCurrentTheme(theme: .Dark);
+            Theme.current.setCurrentTheme(theme: .Dark);
         } else {
-            Theme().setCurrentTheme(theme: .Light);
+            Theme.current.setCurrentTheme(theme: .Light);
         }
         self.output?.reloadTheme()
     }

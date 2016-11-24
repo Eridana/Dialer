@@ -15,6 +15,8 @@ enum ThemeType {
 
 class Theme: NSObject {
 
+    static let current = Theme()
+    
     var currentTheme : ThemeType
     
     override init() {
@@ -24,6 +26,10 @@ class Theme: NSObject {
     
     func setCurrentTheme(theme:ThemeType) {
         self.currentTheme = theme
+    }
+    
+    func barStyle() -> UIStatusBarStyle {
+        return self.themeIsDark() ? .lightContent : .default
     }
     
     func collectionBgColor() -> UIColor {

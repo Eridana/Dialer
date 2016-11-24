@@ -34,6 +34,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var topView: UIView!
     
     var isEditingState = false
     var output: MainModuleViewOutput!
@@ -51,13 +52,14 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         
         self.localize()
         self.setupCollectionView()
+        self.setupTheme()
         
-        self.editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
-        self.themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
+        editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
+        themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
         
         dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
             self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
-            })
+        })
         dataSource.registerCellFor(collectionView: collectionView)
         
         output.moduleDidLoad()
@@ -66,15 +68,14 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    func setupColors() {
-        self.editButton.tintColor = Theme().mappedTextColor()
-        self.themeSegmentedControl.tintColor = Theme().mappedTextColor()
-        collectionView.backgroundColor = Theme().collectionBgColor()
+
+    func setupTheme() {
+        bgImageView.image = Theme.current.mainBackgroundImage()
+        editButton.titleLabel?.textColor = Theme.current.mappedTextColor()
+        themeSegmentedControl.tintColor = Theme.current.mappedTextColor()
+        topView.backgroundColor = Theme.current.collectionBgColor()
+        collectionView.backgroundColor = Theme.current.collectionBgColor()
+        UIApplication.shared.statusBarStyle = Theme.current.barStyle()
     }
     
     func setupCollectionView() {
@@ -83,35 +84,35 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
     
     func localize() {
-        self.themeSegmentedControl.setTitle(NSLocalizedString("main_segment_dark_title", comment: ""), forSegmentAt: 0)
-        self.themeSegmentedControl.setTitle(NSLocalizedString("main_segment_Light_title", comment: ""), forSegmentAt: 1)
-        self.setEditButtonTitle()
+        themeSegmentedControl.setTitle(NSLocalizedString("main_segment_dark_title", comment: ""), forSegmentAt: 0)
+        themeSegmentedControl.setTitle(NSLocalizedString("main_segment_Light_title", comment: ""), forSegmentAt: 1)
+        setEditButtonTitle()
     }
     
     func setEditButtonTitle() {
-        let editBtnTitle = self.isEditingState ? NSLocalizedString("main_done_button_title", comment: "") :
-                                                 NSLocalizedString("main_edit_button_title", comment: "")
-        self.editButton.setTitle(editBtnTitle, for: .normal)
+        let editBtnTitle = isEditingState ? NSLocalizedString("main_done_button_title", comment: "") :
+                                            NSLocalizedString("main_edit_button_title", comment: "")
+        editButton.setTitle(editBtnTitle, for: .normal)
     }
     
     // MARK : Size for cell
     
     func sizeForCell() -> CGSize {
-        let size = self.view.frame.size
+        let size = view.frame.size
         let spacing = 4;
-        let kWidth = size.width / CGFloat(self.widthItemsCount) - CGFloat((self.widthItemsCount - 1) * spacing)
-        let kHeight = size.height / CGFloat(self.heightItemsCount) - CGFloat((self.heightItemsCount - 1) * (spacing * 2))
+        let kWidth = size.width / CGFloat(widthItemsCount) - CGFloat((widthItemsCount - 1) * spacing)
+        let kHeight = size.height / CGFloat(heightItemsCount) - CGFloat((heightItemsCount - 1) * (spacing * 2))
         return CGSize(width: CGFloat(kWidth), height: CGFloat(kHeight))
     }
     
     // MARK : Events
     
     func editTapped() {
-        self.output.editButtonTapped()
+        output.editButtonTapped()
     }
     
     func themeChanged(sender : UISegmentedControl) {
-        self.output.themeSelectedWith(index: sender.selectedSegmentIndex)
+        output.themeSelectedWith(index: sender.selectedSegmentIndex)
     }
     
     // MARK: UICollectionViewDelegate
@@ -129,9 +130,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
 extension MainModuleViewController: MainModuleViewInput {
     
     func reloadTheme() {
-        self.setupColors()
-        self.collectionView.reloadData()
-        self.bgImageView.image = Theme().mainBackgroundImage()
+        setupTheme()
+        collectionView.reloadData()
     }
     
     func update(withData data: [PhoneDomainModel]) {
@@ -155,8 +155,8 @@ extension MainModuleViewController: MainModuleViewInput {
     }
     
     func editButtonDidTap() {
-        self.isEditingState = !self.isEditingState
-        self.setEditButtonTitle()
-        self.collectionView.reloadData()
+        isEditingState = !isEditingState
+        setEditButtonTitle()
+        collectionView.reloadData()
     }
 }

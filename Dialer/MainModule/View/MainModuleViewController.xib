@@ -12,6 +12,7 @@
                 <outlet property="collectionView" destination="zT7-04-1X1" id="ShZ-L4-3lq"/>
                 <outlet property="editButton" destination="hT5-Xr-cD8" id="WA4-Ng-Mx9"/>
                 <outlet property="themeSegmentedControl" destination="T87-C2-e3V" id="rmW-gX-qRb"/>
+                <outlet property="topView" destination="h6C-8y-dSr" id="Z7A-K7-dMh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="tAj-9L-1ND"/>
             </connections>
         </placeholder>
