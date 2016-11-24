@@ -33,6 +33,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var bgImageView: UIImageView!
     
     var isEditingState = false
     var output: MainModuleViewOutput!
@@ -130,6 +131,7 @@ extension MainModuleViewController: MainModuleViewInput {
     func reloadTheme() {
         self.setupColors()
         self.collectionView.reloadData()
+        self.bgImageView.image = Theme().mainBackgroundImage()
     }
     
     func update(withData data: [PhoneDomainModel]) {
@@ -155,5 +157,6 @@ extension MainModuleViewController: MainModuleViewInput {
     func editButtonDidTap() {
         self.isEditingState = !self.isEditingState
         self.setEditButtonTitle()
+        self.collectionView.reloadData()
     }
 }

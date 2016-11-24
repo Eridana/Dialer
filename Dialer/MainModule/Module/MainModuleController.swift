@@ -25,8 +25,13 @@ final class MainModuleController: MainModuleModuleInput {
 
 // MARK: - Interactor Output
 extension MainModuleController: MainModuleInteractorOutput {
+    
     func callPhoneNumber(number : String) {
         self.view.callPhoneNumber(number : number)
+    }
+    
+    func reloadTheme() {
+        self.view.reloadTheme()
     }
 }
 
@@ -58,11 +63,6 @@ extension MainModuleController: MainModuleViewOutput {
     }
     
     func themeSelectedWith(index: Int) {
-        if index == 0 {
-            Theme().setCurrentTheme(theme: .Dark);
-        } else {
-            Theme().setCurrentTheme(theme: .Light);
-        }
-        self.view.reloadTheme()
+        self.interactor.switchThemeFor(index: index)
     }
 }

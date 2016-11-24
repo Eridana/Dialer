@@ -17,6 +17,7 @@ struct Style {
     static let darkNotMappedTextColor = UIColor.init(rgbColorCodeRed: 66, green: 66, blue: 73, alpha: 1)
     static let darkNotMappedBorderColor = UIColor.init(rgbColorCodeRed: 66, green: 66, blue: 73, alpha: 1)
     static let darkMappedBorderColor = UIColor.white
+    static let darkBackgroundImageName = "darkBackground"
  
     //Light
     static let lightCollectionBgColor = UIColor.init(rgbColorCodeRed: 0, green: 0, blue: 0, alpha: 0.25)
@@ -25,4 +26,5 @@ struct Style {
     static let lightNotMappedTextColor = UIColor.init(rgbColorCodeRed: 150, green: 150, blue: 150, alpha: 1)
     static let lightNotMappedBorderColor = UIColor.init(rgbColorCodeRed: 150, green: 150, blue: 150, alpha: 1)
     static let lightMappedBorderColor = UIColor.black
+    static let lightBackgroundImageName = "lightBackground2"
 }

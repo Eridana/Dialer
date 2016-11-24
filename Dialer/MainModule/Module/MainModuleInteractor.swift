@@ -13,11 +13,13 @@ protocol MainModuleInteractorInput: class {
     func possibleCallPhoneNumberFor(data : PhoneDomainModel)
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ())
     func setDataSource(dataSource : PhoneNumbersDataSourceInterface)
+    func switchThemeFor(index: Int)
 }
 
 //MARK: Output
 protocol MainModuleInteractorOutput: class {
     func callPhoneNumber(number : String)
+    func reloadTheme()
 }
 
 // MARK: - Interactor
@@ -60,6 +62,15 @@ final class MainModuleInteractor: MainModuleInteractorInput {
         let data = self.dataSource?.createObjects(count: count)
         let saved = self.dataSource?.save(array: data!)
         return saved ?? false ? data : nil
+    }
+    
+    func switchThemeFor(index: Int) {
+        if index == 0 {
+            Theme().setCurrentTheme(theme: .Dark);
+        } else {
+            Theme().setCurrentTheme(theme: .Light);
+        }
+        self.output?.reloadTheme()
     }
 }
 

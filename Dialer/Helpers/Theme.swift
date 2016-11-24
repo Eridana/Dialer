@@ -1,5 +1,5 @@
 //
-//  ThemeColor.swift
+//  Theme.swift
 //  Dialer
 //
 //  Created by Женя Михайлова on 24.11.16.
@@ -15,7 +15,12 @@ enum ThemeType {
 
 class Theme: NSObject {
 
-    var currentTheme = ThemeType.Dark
+    var currentTheme : ThemeType
+    
+    override init() {
+        self.currentTheme = .Dark
+        super.init()        
+    }
     
     func setCurrentTheme(theme:ThemeType) {
         self.currentTheme = theme
@@ -43,6 +48,14 @@ class Theme: NSObject {
     
     func notMappedBorderColor() -> UIColor {
         return self.themeIsDark() ? Style.darkNotMappedBorderColor : Style.lightNotMappedBorderColor
+    }
+    
+    func mainBackgroundImage() -> UIImage {
+        let imageName = self.themeIsDark() ? Style.darkBackgroundImageName : Style.lightBackgroundImageName
+        guard let image = UIImage(named: imageName) else {
+            return UIImage()
+        }
+        return image
     }
     
     private func themeIsDark() -> Bool {
