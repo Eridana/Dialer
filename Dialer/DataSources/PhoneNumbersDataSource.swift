@@ -8,7 +8,7 @@
 
 import Result
 
-class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
+final class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
 
     let defaultsKeyName = "savedData"
     
@@ -16,7 +16,7 @@ class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
         return saveArrayToDefaultsWithKey(key: defaultsKeyName, array: array)
     }
     
-    func load(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ()) {
+    func load(_ result: @escaping (Result<[PhoneDomainModel]?, NSError>) -> ()) {
         if let array = arrayFromDefaultsWithKey(key: defaultsKeyName) as [PhoneEntity]? {
             if let convertedData = convertToModels(entities: array) as [PhoneDomainModel]? {
                 result(.success(convertedData))
@@ -24,7 +24,7 @@ class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
                 result(.failure(NSError(domain: "Failed to convert data", code: 1, userInfo: nil)))
             }
         } else {
-            result(.failure(NSError(domain: "No such data in file", code: 1, userInfo: nil)))
+            result(.success(nil))
         }
     }
     

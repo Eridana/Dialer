@@ -6,4 +6,14 @@
   Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
 */
 
+
+// Main Screen
+
+"main_edit_button_title" = "Изменить";
+"main_done_button_title" = "Готово";
+"main_segment_dark_title" = "Тёмная тема";
+"main_segment_Light_title" = "Светлая тема";
+
+// Cells
+
 "item_not_set_title_text" = "Не задано";

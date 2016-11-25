@@ -14,23 +14,31 @@ protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
     func callPhoneNumber(number : String)
+    func editButtonDidTap()
 }
 
 protocol MainModuleViewOutput: class {
     func moduleDidLoad()
     func didSelectItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
-    func editButtonDidTap()
+    func editButtonTapped()
 }
 
 
 // MARK: - View Controller
-final class MainModuleViewController: UIViewController, UICollectionViewDelegate {
+final class MainModuleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var topView: UIView!
     
+    var isEditingState = false
     var output: MainModuleViewOutput!
     var dataSource = MainModuleCollectionViewDataSource()
+    let widthItemsCount = 3
+    let heightItemsCount = 4
     
     // MARK: - Life cycle
     func configure() {
@@ -39,25 +47,105 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = dataSource
-        collectionView.delegate = self
+        
+        localize()
+        setupCollectionView()
+        setupTheme()
+        
+        editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
+        themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
+        
         dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
             self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
-            })
+        })
+        dataSource.registerCellFor(collectionView: collectionView)
+        
         output.moduleDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dataSource.setScreenSize(size: self.view.frame.size)
+    }
+
+    func setupTheme() {
+        
+        let theme = Theme.current
+        
+        bgImageView.image = theme.mainBackgroundImage()
+        editButton.setTitleColor(theme.mappedTextColor(), for: .normal)
+        editButton.setTitleColor(theme.mappedTextColor(), for: .highlighted)
+        themeSegmentedControl.tintColor = theme.mappedTextColor()
+        topView.backgroundColor = theme.collectionBgColor()
+        collectionView.backgroundColor = theme.collectionBgColor()
+        UIApplication.shared.statusBarStyle = theme.barStyle()
+        
+        if theme.currentTheme == .Dark {
+            self.themeSegmentedControl.selectedSegmentIndex = 0
+        } else {
+            self.themeSegmentedControl.selectedSegmentIndex = 1
+        }
+    }
+    
+    func setupCollectionView() {
+        collectionView.dataSource = dataSource
+        collectionView.delegate = self
+    }
+    
+    func localize() {
+        themeSegmentedControl.setTitle(NSLocalizedString("main_segment_dark_title", comment: ""), forSegmentAt: 0)
+        themeSegmentedControl.setTitle(NSLocalizedString("main_segment_Light_title", comment: ""), forSegmentAt: 1)
+        setEditButtonTitle()
+    }
+    
+    func setEditButtonTitle() {
+        
+        let editBtnTitle = isEditingState ? NSLocalizedString("main_done_button_title", comment: "") :
+                                            NSLocalizedString("main_edit_button_title", comment: "")
+        // to prevent title flashing set title, then resize
+        editButton.titleLabel?.text = editBtnTitle;
+        editButton.setTitle(editBtnTitle, for: .normal)
+        editButton.setTitle(editBtnTitle, for: .highlighted)
+    }
+    
+    // Mark themes reload 
+    
+    func reloadTheme() {
+        setupTheme()
+        collectionView.reloadData()
+    }
+    
+    // MARK : Size for cell
+    
+    func sizeForCell() -> CGSize {
+        let size = view.frame.size
+        let spacing = 4;
+        let kWidth = size.width / CGFloat(widthItemsCount) - CGFloat((widthItemsCount - 1) * spacing)
+        let kHeight = size.height / CGFloat(heightItemsCount) - CGFloat((heightItemsCount - 1) * (spacing * 2))
+        return CGSize(width: CGFloat(kWidth), height: CGFloat(kHeight))
     }
     
     // MARK : Events
     
+    func editTapped() {
+        output.editButtonTapped()
+    }
+    
+    func themeChanged(sender : UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            Theme.current.setCurrentTheme(theme: .Dark);
+        } else {
+            Theme.current.setCurrentTheme(theme: .Light);
+        }
+        reloadTheme()
+    }
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         output.didSelectItemAtIndex(index: indexPath.item)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return sizeForCell()
     }
 }
 
@@ -83,5 +171,11 @@ extension MainModuleViewController: MainModuleViewInput {
                 UIApplication.shared.openURL(url)
             }
         }
+    }
+    
+    func editButtonDidTap() {
+        isEditingState = !isEditingState
+        setEditButtonTitle()
+        collectionView.reloadData()
     }
 }
