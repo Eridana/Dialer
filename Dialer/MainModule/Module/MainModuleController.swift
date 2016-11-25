@@ -29,17 +29,12 @@ extension MainModuleController: MainModuleInteractorOutput {
     func callPhoneNumber(number : String) {
         self.view.callPhoneNumber(number : number)
     }
-    
-    func reloadTheme() {
-        self.view.reloadTheme()
-    }
 }
 
 // MARK: - View Output
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        self.interactor.loadSavedTheme()
         self.interactor.requestData { [unowned self] (result) in
             switch result {
                 case .success(let data) :
@@ -61,9 +56,5 @@ extension MainModuleController: MainModuleViewOutput {
     
     func editButtonTapped() {
         self.view.editButtonDidTap()
-    }
-    
-    func themeSelectedWith(index: Int) {
-        self.interactor.switchThemeFor(index: index)
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol ThemesDataSourceInterface: class {
+    func themeDidSelect(theme : ThemeType)
     func loadTheme() -> ThemeType
     func saveTheme(theme : ThemeType)
 }

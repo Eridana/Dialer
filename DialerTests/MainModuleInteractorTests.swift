@@ -44,10 +44,10 @@ class MainModuleInteractorTests: XCTestCase {
     
     func testSwitchTheme() {
         
-        interactor.switchThemeFor(index: 0)
+        Theme.current.setCurrentTheme(theme: .Dark);
         XCTAssert(Theme.current.currentTheme == .Dark)
         
-        interactor.switchThemeFor(index: 1)
+        Theme.current.setCurrentTheme(theme: .Light);
         XCTAssert(Theme.current.currentTheme == .Light)
     }
 }

@@ -13,7 +13,6 @@ import UIKit
 protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
-    func reloadTheme()
     func callPhoneNumber(number : String)
     func editButtonDidTap()
 }
@@ -23,7 +22,6 @@ protocol MainModuleViewOutput: class {
     func didSelectItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
     func editButtonTapped()
-    func themeSelectedWith(index : Int)
 }
 
 
@@ -50,8 +48,9 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.localize()
-        self.setupCollectionView()
+        localize()
+        setupCollectionView()
+        setupTheme()
         
         editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
         themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
@@ -107,6 +106,12 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         editButton.setTitle(editBtnTitle, for: .normal)
         editButton.setTitle(editBtnTitle, for: .highlighted)
     }
+    
+    // Mark themes reload 
+    
+    func reloadTheme() {
+        setupTheme()
+        collectionView.reloadData()
     }
     
     // MARK : Size for cell
@@ -126,7 +131,12 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
     
     func themeChanged(sender : UISegmentedControl) {
-        output.themeSelectedWith(index: sender.selectedSegmentIndex)
+        if sender.selectedSegmentIndex == 0 {
+            Theme.current.setCurrentTheme(theme: .Dark);
+        } else {
+            Theme.current.setCurrentTheme(theme: .Light);
+        }
+        reloadTheme()
     }
     
     // MARK: UICollectionViewDelegate
@@ -142,11 +152,6 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
 
 // MARK: - View Input
 extension MainModuleViewController: MainModuleViewInput {
-    
-    func reloadTheme() {
-        setupTheme()
-        collectionView.reloadData()
-    }
     
     func update(withData data: [PhoneDomainModel]) {
         dataSource.update(data: data)
