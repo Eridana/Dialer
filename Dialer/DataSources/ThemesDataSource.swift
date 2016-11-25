@@ -12,6 +12,11 @@ class ThemesDataSource: NSObject, ThemesDataSourceInterface {
 
     let defaultsKeyName = "savedTheme"
     
+    func themeDidSelect(theme : ThemeType) {
+        Theme.current.setCurrentTheme(theme: theme)
+        self.saveTheme(theme: theme)
+    }
+    
     func saveTheme(theme: ThemeType) {
         self.saveThemeInDefaults(theme: theme, forKey : defaultsKeyName)
     }

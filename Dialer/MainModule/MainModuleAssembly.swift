@@ -20,10 +20,9 @@ final class MainModuleAssembly
 		let router = MainModuleRouter()
 
         let dataSource = PhoneNumbersDataSource()
-        let themesDataSource = ThemesDataSource()
+        
 		interactor.output = controller
         interactor.dataSource = dataSource
-        interactor.themesDataSource = themesDataSource
 
 		controller.view = view
 		controller.interactor = interactor

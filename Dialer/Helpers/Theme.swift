@@ -16,16 +16,19 @@ enum ThemeType : String {
 class Theme: NSObject {
 
     static let current = Theme()
+    private var dataSource : ThemesDataSourceInterface!
     
-    var currentTheme : ThemeType
+    private(set) public var currentTheme : ThemeType
     
     override init() {
-        self.currentTheme = .Dark
+        self.dataSource = ThemesDataSource()
+        self.currentTheme = dataSource.loadTheme()
         super.init()        
     }
     
-    func setCurrentTheme(theme:ThemeType) {
+    func setCurrentTheme(theme : ThemeType) {
         self.currentTheme = theme
+        self.dataSource.saveTheme(theme: theme)
     }
     
     func barStyle() -> UIStatusBarStyle {
