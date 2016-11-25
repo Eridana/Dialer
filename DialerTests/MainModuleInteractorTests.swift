@@ -41,13 +41,4 @@ class MainModuleInteractorTests: XCTestCase {
         }
         
     }
-    
-    func testSwitchTheme() {
-        
-        Theme.current.setCurrentTheme(theme: .Dark);
-        XCTAssert(Theme.current.currentTheme == .Dark)
-        
-        Theme.current.setCurrentTheme(theme: .Light);
-        XCTAssert(Theme.current.currentTheme == .Light)
-    }
 }
