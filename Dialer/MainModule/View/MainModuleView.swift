@@ -69,14 +69,18 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
 
     func setupTheme() {
-        bgImageView.image = Theme.current.mainBackgroundImage()
-        editButton.titleLabel?.textColor = Theme.current.mappedTextColor()
-        themeSegmentedControl.tintColor = Theme.current.mappedTextColor()
-        topView.backgroundColor = Theme.current.collectionBgColor()
-        collectionView.backgroundColor = Theme.current.collectionBgColor()
-        UIApplication.shared.statusBarStyle = Theme.current.barStyle()
         
-        if Theme.current.currentTheme == .Dark {
+        let theme = Theme.current
+        
+        bgImageView.image = theme.mainBackgroundImage()
+        editButton.setTitleColor(theme.mappedTextColor(), for: .normal)
+        editButton.setTitleColor(theme.mappedTextColor(), for: .highlighted)
+        themeSegmentedControl.tintColor = theme.mappedTextColor()
+        topView.backgroundColor = theme.collectionBgColor()
+        collectionView.backgroundColor = theme.collectionBgColor()
+        UIApplication.shared.statusBarStyle = theme.barStyle()
+        
+        if theme.currentTheme == .Dark {
             self.themeSegmentedControl.selectedSegmentIndex = 0
         } else {
             self.themeSegmentedControl.selectedSegmentIndex = 1
@@ -95,9 +99,14 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
     
     func setEditButtonTitle() {
+        
         let editBtnTitle = isEditingState ? NSLocalizedString("main_done_button_title", comment: "") :
                                             NSLocalizedString("main_edit_button_title", comment: "")
+        // to prevent title flashing set title, then resize
+        editButton.titleLabel?.text = editBtnTitle;
         editButton.setTitle(editBtnTitle, for: .normal)
+        editButton.setTitle(editBtnTitle, for: .highlighted)
+    }
     }
     
     // MARK : Size for cell
