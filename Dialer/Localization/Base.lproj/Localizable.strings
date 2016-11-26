@@ -6,6 +6,15 @@
   Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
 */
 
+// Alerts
+
+"contact_phone_selection_alert_title" = "Please select phone";
+"contact_no_phones_alert_title" = "This contact doesn't have any phone numbers";
+"change_mapping_alert_button_title" = "Would you like to change phone number or contact?";
+"cancel_alert_button_title" = "Cancel";
+"ok_alert_button_title" = "OK";
+"yes_alert_button_title" = "Yes";
+"no_alert_button_title" = "No";
 
 // Main Screen
 

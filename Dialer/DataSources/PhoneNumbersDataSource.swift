@@ -10,7 +10,11 @@ import Result
 
 final class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
 
-    let defaultsKeyName = "savedData"
+    internal var defaultsKeyName = "savedData"
+    
+    func setDefaultsKey(name : String) {
+        self.defaultsKeyName = name
+    }
     
     func save(array:[PhoneDomainModel]) -> Bool {
         return saveArrayToDefaultsWithKey(key: defaultsKeyName, array: array)

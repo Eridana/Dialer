@@ -13,17 +13,23 @@ protocol MainModuleInteractorInput: class {
     func possibleCallPhoneNumberFor(data : PhoneDomainModel)
     func requestData(_ result: @escaping (Result<[PhoneDomainModel], NSError>) -> ())
     func setDataSource(dataSource : PhoneNumbersDataSourceInterface)
+    func removeItemMapping(phoneItem : PhoneDomainModel)
+    func shouldPresentContactsScreenFor(phoneItem : PhoneDomainModel) -> Bool
+    func updateContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int)
 }
 
 //MARK: Output
 protocol MainModuleInteractorOutput: class {
     func callPhoneNumber(number : String)
+    func openContacts()
+    func updateWith(data : [PhoneDomainModel])
 }
 
 // MARK: - Interactor
 final class MainModuleInteractor: MainModuleInteractorInput {
     weak var output: MainModuleInteractorOutput!
     var dataSource : PhoneNumbersDataSourceInterface!
+    var data : [PhoneDomainModel]?
     
     func setDataSource(dataSource: PhoneNumbersDataSourceInterface) {
         self.dataSource = dataSource
@@ -40,12 +46,14 @@ final class MainModuleInteractor: MainModuleInteractorInput {
             
             switch loadedResult {
                 
-            case .success(let data) :
+            case .success(let savedData) :
                 
-                if data != nil {
-                    result(.success(data!))
+                if savedData != nil {
+                    self.data = savedData
+                    result(.success(savedData!))
                 }
                 else if let createdObjects = self.createObjects() {
+                    self.data = createdObjects
                     result(.success(createdObjects))
                 }
                 
@@ -57,9 +65,34 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     
     func createObjects() -> [PhoneDomainModel]? {
         let count = 12
-        let data = self.dataSource?.createObjects(count: count)
-        let saved = self.dataSource?.save(array: data!)
-        return saved ?? false ? data : nil
+        let objects = dataSource?.createObjects(count: count)
+        let saved = dataSource?.save(array: objects!)
+        return saved ?? false ? objects : nil
+    }
+    
+    func shouldPresentContactsScreenFor(phoneItem : PhoneDomainModel) -> Bool {
+        return !phoneItem.mapped
+    }
+    
+    func updateContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int) {
+        
+        let filtered = data?.filter() { $0.index == atIndex }
+        let item = filtered?.first
+        if item != nil {
+            item?.displayedName = "\(name) \(surname)"
+            item?.phoneNumber = phoneNumber
+            item?.mapped = true
+        }
+        let _ = dataSource?.save(array: data!)
+        output.updateWith(data: data!)
+    }
+    
+    func removeItemMapping(phoneItem : PhoneDomainModel) {
+        phoneItem.displayedName = ""
+        phoneItem.phoneNumber = ""
+        phoneItem.mapped = false
+        let _ = dataSource?.save(array: data!)
+        output.updateWith(data: data!)
     }
 }
 

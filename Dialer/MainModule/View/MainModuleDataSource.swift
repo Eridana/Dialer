@@ -55,15 +55,7 @@ extension MainModuleCollectionViewDataSource: UICollectionViewDataSource {
             else { return UICollectionViewCell() }
         
         cell.fill(withData: item)
-        
-        if EditingState.current.isEditing {
-            cell.setupActionButton()
-        } else {
-            cell.hideActionButton()
-        }
-        
-        cell.cellDelegate = cellDelegate
-        
+        cell.cellDelegate = cellDelegate        
         return cell
     }
     

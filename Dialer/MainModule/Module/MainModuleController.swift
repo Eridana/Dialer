@@ -35,7 +35,7 @@ extension MainModuleController: MainModuleInteractorOutput {
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        self.interactor.requestData { [unowned self] (result) in
+        interactor.requestData { [unowned self] (result) in
             switch result {
                 case .success(let data) :
                     self.data = data
@@ -47,14 +47,38 @@ extension MainModuleController: MainModuleViewOutput {
     }
     
     func didSelectItemAtIndex(index : Int) {
-        self.interactor.possibleCallPhoneNumberFor(data: self.data![index])
+        if EditingState.current.isEditing {
+            if interactor.shouldPresentContactsScreenFor(phoneItem: data![index]) {
+                openContacts()
+            } else {
+                view.showChangeMappingAlert()
+            }
+        } else {
+            interactor.possibleCallPhoneNumberFor(data: self.data![index])
+        }
+    }
+    
+    func openContacts() {
+        router.openContacts()
+    }
+    
+    func removeItemDidTap(phoneItem : PhoneDomainModel) {
+        interactor.removeItemMapping(phoneItem : phoneItem)
     }
     
     func moveItem(fromIndex: Int, toIndex: Int) {
         
     }
     
-    func editButtonTapped() {
-        self.view.editButtonDidTap()
+    func userSelectedContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int) {
+        interactor.updateContactWith(name: name, surname: surname, phoneNumber: phoneNumber, atIndex: atIndex)
+    }
+    
+    func userDidSelectContactChange() {
+        router.openContacts()
+    }
+    
+    func updateWith(data : [PhoneDomainModel]) {
+        self.view.update(withData:data)
     }
 }
