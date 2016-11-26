@@ -8,17 +8,27 @@
 
 import UIKit
 
+protocol MainModuleCollectionViewCellDelegate : class {
+    func actionButtonDidTapFor(phoneItem : PhoneDomainModel)
+}
+
 class MainModuleCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var index: UILabel!
     @IBOutlet weak var roundedView: UIView!
+    @IBOutlet weak var actionButton: UIButton!
+    weak var cellDelegate : MainModuleCollectionViewCellDelegate?
+    
+    private var cellData : PhoneDomainModel?
+    private var removeMappingButtonImageName = "removeCellButton"
     
     static let reuseIdentifier = "MainModuleCollectionViewCell"
     
     func fill(withData data: PhoneDomainModel) {
         /*Fill data with model*/
+        cellData = data
         index.text = "\(data.index + 1)"
         name.text = data.mapped ? data.displayedName : NSLocalizedString("item_not_set_title_text", comment: "")
         phone.text = data.mapped ? data.phoneNumber : ""
@@ -39,6 +49,23 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         name.textColor = Theme.current.notMappedTextColor()
     }
     
+    func setupActionButton() {
+        let image = UIImage(named: removeMappingButtonImageName)
+        actionButton.setImage(image, for: .normal)
+        actionButton.setImage(image, for: .selected)
+        actionButton.isHidden = false
+    }
+    
+    func hideActionButton() {
+        actionButton.isHidden = true
+    }
+    
+    func actionButtonDidTap(sender : UIButton) {
+        if let delegate = cellDelegate {
+            delegate.actionButtonDidTapFor(phoneItem: cellData!)
+        }
+    }
+    
     override func prepareForReuse() {
         name.text = ""
         phone.text = ""
@@ -49,5 +76,6 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         // Initialization code
         roundedView.layer.cornerRadius = 6.0
         roundedView.layer.borderWidth = 1.0
+        actionButton.addTarget(self, action: #selector(actionButtonDidTap(sender:)), for: .touchUpInside)
     }
 }

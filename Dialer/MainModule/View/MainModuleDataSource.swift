@@ -11,6 +11,7 @@ import UIKit
 final class MainModuleCollectionViewDataSource: NSObject {    
     var data: [PhoneDomainModel]?
     var moveItemsCompletionHandler: ((Int, Int) -> Void)?
+    internal var cellDelegate : MainModuleCollectionViewCellDelegate?
     
     func update(data: [PhoneDomainModel]?) {
         self.data = data
@@ -29,6 +30,10 @@ final class MainModuleCollectionViewDataSource: NSObject {
     
     func setMoveItemsCompletionHandlerAs(handler : @escaping ((Int, Int) -> Void)) {
         self.moveItemsCompletionHandler = handler
+    }
+    
+    func setCellDelegate(delegate : MainModuleCollectionViewCellDelegate) {
+        self.cellDelegate = delegate
     }
 }
 
@@ -50,6 +55,15 @@ extension MainModuleCollectionViewDataSource: UICollectionViewDataSource {
             else { return UICollectionViewCell() }
         
         cell.fill(withData: item)
+        
+        if EditingState.current.isEditing {
+            cell.setupActionButton()
+        } else {
+            cell.hideActionButton()
+        }
+        
+        cell.cellDelegate = cellDelegate
+        
         return cell
     }
     

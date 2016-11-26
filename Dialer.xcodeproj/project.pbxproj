@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F037C151DE98C2E0056E7AE /* EditingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F037C141DE98C2E0056E7AE /* EditingState.swift */; };
 		3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */; };
 		3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */; };
 		3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812111DE6B9D8005B8EDC /* Style.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F037C141DE98C2E0056E7AE /* EditingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingState.swift; sourceTree = "<group>"; };
 		3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInteractorTests.swift; sourceTree = "<group>"; };
 		3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Rgb.swift"; sourceTree = "<group>"; };
 		3F3812111DE6B9D8005B8EDC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				3F3812111DE6B9D8005B8EDC /* Style.swift */,
 				3F3812131DE6C067005B8EDC /* Theme.swift */,
+				3F037C141DE98C2E0056E7AE /* EditingState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 				3FAC62131DE326E0000B06E5 /* MainModuleDataSource.swift in Sources */,
 				3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */,
 				3F3812141DE6C067005B8EDC /* Theme.swift in Sources */,
+				3F037C151DE98C2E0056E7AE /* EditingState.swift in Sources */,
 				3F3812161DE70B59005B8EDC /* ThemesDataSourceInterface.swift in Sources */,
 				3FAC62311DE4854A000B06E5 /* PhoneNumbersDataSource.swift in Sources */,
 				3FAC61FA1DE325B9000B06E5 /* PhoneDomainModel.swift in Sources */,
