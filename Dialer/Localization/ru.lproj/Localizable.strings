@@ -13,8 +13,8 @@
 "change_mapping_alert_button_title" = "Вы хотите изменить контакт или номер телефона?";
 "cancel_alert_button_title" = "Отмена";
 "ok_alert_button_title" = "ОК";
-"ok_alert_button_title" = "Да";
-"ok_alert_button_title" = "Нет";
+"yes_alert_button_title" = "Да";
+"no_alert_button_title" = "Нет";
 
 // Main Screen
 

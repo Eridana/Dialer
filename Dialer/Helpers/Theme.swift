@@ -39,10 +39,6 @@ class Theme: NSObject {
         return self.themeIsDark() ? Style.darkCollectionBgColor : Style.lightCollectionBgColor
     }
     
-    func cellBgColor() -> UIColor {
-        return self.themeIsDark() ? Style.darkCellBgColor : Style.lightCellBgColor
-    }
-    
     func mappedTextColor() -> UIColor {
         return self.themeIsDark() ? Style.darkMappedTextColor : Style.lightMappedTextColor
     }
@@ -57,6 +53,14 @@ class Theme: NSObject {
     
     func notMappedBorderColor() -> UIColor {
         return self.themeIsDark() ? Style.darkNotMappedBorderColor : Style.lightNotMappedBorderColor
+    }
+    
+    func mappedCellBgColor() -> UIColor {
+        return self.themeIsDark() ? Style.darkMappedCellBgColor : Style.lightMappedCellBgColor
+    }
+    
+    func notMappedCellBgColor() -> UIColor {
+        return self.themeIsDark() ? Style.darkNotMappedCellBgColor : Style.lightNotMappedCellBgColor
     }
     
     func mainBackgroundImage() -> UIImage {

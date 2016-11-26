@@ -17,6 +17,7 @@ class PhoneNumbersDataSourceTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.dataSource = PhoneNumbersDataSource()
+        self.dataSource?.setDefaultsKey(name : "testSavedData")
     }
     
     override func tearDown() {
@@ -65,7 +66,7 @@ class PhoneNumbersDataSourceTests: XCTestCase {
             case .success(let data):
                 XCTAssertNotNil(data)
                 XCTAssert(data?.count == count)
-            case .failure(let error):
+            case .failure(let _):
                 XCTFail()
             }
         })

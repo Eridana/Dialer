@@ -9,6 +9,7 @@
 import Result
 
 protocol PhoneNumbersDataSourceInterface: class {
+    func setDefaultsKey(name : String)
     func save(array:[PhoneDomainModel]) -> Bool;
     func load(_ result: @escaping (Result<[PhoneDomainModel]?, NSError>) -> ());
     func createObjects(count : Int) -> [PhoneDomainModel]?

@@ -63,6 +63,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
             self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
         })
         dataSource.registerCellFor(collectionView: collectionView)
+        dataSource.setCellDelegate(delegate: self)
         
         output.moduleDidLoad()
     }
@@ -223,7 +224,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     func showNoPhonesAlert() {
 
-        let alert = alertControllerWith(title: NSLocalizedString("ok_alert_button_title", comment: ""), cancelButtonTitle: NSLocalizedString("ok_alert_button_title", comment: ""))
+        let alert = alertControllerWith(title: NSLocalizedString("contact_no_phones_alert_title", comment: ""), cancelButtonTitle: NSLocalizedString("ok_alert_button_title", comment: ""))
         
         // it seems contacts controller not dismissing for a while
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
@@ -242,7 +243,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         
         if let okTitle = okButtonTitle {
             
-            let okAction = UIAlertAction(title: okTitle, style: .cancel) { (action) in
+            let okAction = UIAlertAction(title: okTitle, style: .default) { (action) in
                 okCompletion()
             }
             alertController.addAction(okAction)
@@ -278,7 +279,7 @@ extension MainModuleViewController: MainModuleViewInput {
     func showChangeMappingAlert() {
         
         let title = NSLocalizedString("change_mapping_alert_button_title", comment: "")
-        let okButtonTitle = NSLocalizedString("ok_alert_button_title", comment: "")
+        let okButtonTitle = NSLocalizedString("yes_alert_button_title", comment: "")
         let cancelButtonTitle = NSLocalizedString("no_alert_button_title", comment: "")
         
         let alert = alertControllerWith(title: title, okButtonTitle: okButtonTitle, cancelButtonTitle: cancelButtonTitle, okCompletion: {

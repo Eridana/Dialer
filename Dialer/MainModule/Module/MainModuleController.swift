@@ -71,10 +71,14 @@ extension MainModuleController: MainModuleViewOutput {
     }
     
     func userSelectedContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int) {
-        
+        interactor.updateContactWith(name: name, surname: surname, phoneNumber: phoneNumber, atIndex: atIndex)
     }
     
     func userDidSelectContactChange() {
         router.openContacts()
+    }
+    
+    func updateWith(data : [PhoneDomainModel]) {
+        self.view.update(withData:data)
     }
 }

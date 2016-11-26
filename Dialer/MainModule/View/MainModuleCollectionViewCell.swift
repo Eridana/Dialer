@@ -34,16 +34,15 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         name.text = data.mapped ? data.displayedName : NSLocalizedString("item_not_set_title_text", comment: "")
         phone.text = data.mapped ? data.phoneNumber : ""
         data.mapped ? configureCellAsMapped() : configureCellAsNotMapped()
-        roundedView.backgroundColor = Theme.current.cellBgColor()
         
         let mapped = data.mapped
         let isEditing = EditingState.current.isEditing
         
-
         if isEditing {
             if mapped {
                 setupActionButton()
                 name.isHidden = false
+                addImageView.isHidden = true
             } else {
                 name.isHidden = true
                 addImageView.isHidden = false
@@ -56,15 +55,21 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     
     func configureCellAsMapped() {
         roundedView.layer.borderColor = Theme.current.mappedBorderColor().cgColor
-        name.textColor = Theme.current.mappedTextColor()
-        phone.textColor = Theme.current.mappedTextColor()
-        name.textColor = Theme.current.mappedTextColor()
+        roundedView.backgroundColor = Theme.current.mappedCellBgColor()
+        setTextColorAs(color: Theme.current.mappedTextColor())
     }
     
     func configureCellAsNotMapped() {
         roundedView.layer.borderColor = Theme.current.notMappedBorderColor().cgColor
-        index.textColor = Theme.current.notMappedTextColor()
-        name.textColor = Theme.current.notMappedTextColor()
+        roundedView.backgroundColor = Theme.current.notMappedCellBgColor()
+        setTextColorAs(color: Theme.current.notMappedTextColor())
+    }
+    
+    func setTextColorAs(color : UIColor) {
+        name.textColor = color
+        phone.textColor = color
+        name.textColor = color
+        index.textColor = color
     }
     
     func setupActionButton() {
@@ -83,6 +88,9 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         name.text = ""
         phone.text = ""
+        name.isHidden = false
+        addImageView.isHidden = true
+        actionButton.isHidden = true
     }
     
     override func awakeFromNib() {
