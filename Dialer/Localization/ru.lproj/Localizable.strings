@@ -6,6 +6,12 @@
   Copyright © 2016 Evgeniya Mikhailova. All rights reserved.
 */
 
+// Alerts
+
+"contact_phone_selection_alert_title" = "Пожалуйста выберите телефон";
+"contact_no_phones_alert_title" = "Этот контакт не содержит ни одного номера";
+"cancel_alert_button_title" = "Отмена";
+"ok_alert_button_title" = "ОК";
 
 // Main Screen
 
