@@ -16,7 +16,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQh-Kl-KcS">
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-zx-mxi">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dfY-Ae-kMP"/>
+                                    <constraint firstAttribute="width" constant="40" id="jBO-UQ-Ozg"/>
+                                </constraints>
+                                <state key="normal" image="addCellButton"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vpv-zx-mxi" secondAttribute="trailing" id="V7p-3a-dGU"/>
+                            <constraint firstItem="vpv-zx-mxi" firstAttribute="top" secondItem="VQh-Kl-KcS" secondAttribute="top" id="ymu-3Q-Ffw"/>
+                        </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EiB-l8-QyI">
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -55,6 +68,7 @@
             </constraints>
             <size key="customSize" width="174" height="152"/>
             <connections>
+                <outlet property="actionButton" destination="vpv-zx-mxi" id="KKR-Qi-bol"/>
                 <outlet property="index" destination="EiB-l8-QyI" id="DYB-J6-Axb"/>
                 <outlet property="name" destination="bje-or-9f6" id="GmZ-G4-9Qt"/>
                 <outlet property="phone" destination="f7r-LG-zcf" id="4nf-GM-gWX"/>
@@ -63,4 +77,7 @@
             <point key="canvasLocation" x="63" y="23"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="addCellButton" width="19" height="19"/>
+    </resources>
 </document>

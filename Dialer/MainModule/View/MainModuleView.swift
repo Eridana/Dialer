@@ -14,14 +14,12 @@ protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
     func callPhoneNumber(number : String)
-    func editButtonDidTap()
 }
 
 protocol MainModuleViewOutput: class {
     func moduleDidLoad()
     func didSelectItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
-    func editButtonTapped()
 }
 
 
@@ -34,7 +32,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var topView: UIView!
     
-    var isEditingState = false
+    var editingState = EditingState.current
     var output: MainModuleViewOutput!
     var dataSource = MainModuleCollectionViewDataSource()
     let widthItemsCount = 3
@@ -99,8 +97,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     func setEditButtonTitle() {
         
-        let editBtnTitle = isEditingState ? NSLocalizedString("main_done_button_title", comment: "") :
-                                            NSLocalizedString("main_edit_button_title", comment: "")
+        let editBtnTitle = editingState.isEditing ? NSLocalizedString("main_done_button_title", comment: "") :
+                                                    NSLocalizedString("main_edit_button_title", comment: "")
         // to prevent title flashing set title, then resize
         editButton.titleLabel?.text = editBtnTitle;
         editButton.setTitle(editBtnTitle, for: .normal)
@@ -127,7 +125,9 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     // MARK : Events
     
     func editTapped() {
-        output.editButtonTapped()
+        editingState.changeState()
+        setEditButtonTitle()
+        collectionView.reloadData()
     }
     
     func themeChanged(sender : UISegmentedControl) {
@@ -171,11 +171,5 @@ extension MainModuleViewController: MainModuleViewInput {
                 UIApplication.shared.openURL(url)
             }
         }
-    }
-    
-    func editButtonDidTap() {
-        isEditingState = !isEditingState
-        setEditButtonTitle()
-        collectionView.reloadData()
     }
 }
