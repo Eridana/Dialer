@@ -48,7 +48,11 @@ extension MainModuleController: MainModuleViewOutput {
     
     func didSelectItemAtIndex(index : Int) {
         if EditingState.current.isEditing {
-            
+            if interactor.shouldPresentContactsScreenFor(phoneItem: data![index]) {
+                openContacts()
+            } else {
+                view.showChangeMappingAlert()
+            }
         } else {
             interactor.possibleCallPhoneNumberFor(data: self.data![index])
         }
@@ -58,11 +62,19 @@ extension MainModuleController: MainModuleViewOutput {
         router.openContacts()
     }
     
+    func removeItemDidTap(phoneItem : PhoneDomainModel) {
+        interactor.removeItemMapping(phoneItem : phoneItem)
+    }
+    
     func moveItem(fromIndex: Int, toIndex: Int) {
         
     }
     
-    func userSelectedContactWith(name : String, surname : String, phoneNumber : String) {
+    func userSelectedContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int) {
         
+    }
+    
+    func userDidSelectContactChange() {
+        router.openContacts()
     }
 }

@@ -10,8 +10,11 @@
 
 "contact_phone_selection_alert_title" = "Пожалуйста выберите телефон";
 "contact_no_phones_alert_title" = "Этот контакт не содержит ни одного номера";
+"change_mapping_alert_button_title" = "Вы хотите изменить контакт или номер телефона?";
 "cancel_alert_button_title" = "Отмена";
 "ok_alert_button_title" = "ОК";
+"ok_alert_button_title" = "Да";
+"ok_alert_button_title" = "Нет";
 
 // Main Screen
 

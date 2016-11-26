@@ -17,17 +17,26 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQh-Kl-KcS">
                         <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addCellButton" translatesAutoresizingMaskIntoConstraints="NO" id="Hz8-OS-0Y5">
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FBq-Ox-nWe"/>
+                                    <constraint firstAttribute="height" constant="50" id="bbu-6z-u6N"/>
+                                </constraints>
+                            </imageView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-zx-mxi">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dfY-Ae-kMP"/>
                                     <constraint firstAttribute="width" constant="40" id="jBO-UQ-Ozg"/>
                                 </constraints>
-                                <state key="normal" image="addCellButton"/>
+                                <state key="normal" image="removeCellButton"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Hz8-OS-0Y5" firstAttribute="centerX" secondItem="VQh-Kl-KcS" secondAttribute="centerX" id="PU4-uD-Vpi"/>
                             <constraint firstAttribute="trailing" secondItem="vpv-zx-mxi" secondAttribute="trailing" id="V7p-3a-dGU"/>
+                            <constraint firstItem="Hz8-OS-0Y5" firstAttribute="centerY" secondItem="VQh-Kl-KcS" secondAttribute="centerY" id="dgP-Y5-qbb"/>
                             <constraint firstItem="vpv-zx-mxi" firstAttribute="top" secondItem="VQh-Kl-KcS" secondAttribute="top" id="ymu-3Q-Ffw"/>
                         </constraints>
                     </view>
@@ -69,6 +78,7 @@
             <size key="customSize" width="174" height="152"/>
             <connections>
                 <outlet property="actionButton" destination="vpv-zx-mxi" id="KKR-Qi-bol"/>
+                <outlet property="addImageView" destination="Hz8-OS-0Y5" id="j4V-Qh-I3n"/>
                 <outlet property="index" destination="EiB-l8-QyI" id="DYB-J6-Axb"/>
                 <outlet property="name" destination="bje-or-9f6" id="GmZ-G4-9Qt"/>
                 <outlet property="phone" destination="f7r-LG-zcf" id="4nf-GM-gWX"/>
@@ -78,6 +88,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="addCellButton" width="19" height="19"/>
+        <image name="addCellButton" width="88" height="86"/>
+        <image name="removeCellButton" width="15" height="15"/>
     </resources>
 </document>

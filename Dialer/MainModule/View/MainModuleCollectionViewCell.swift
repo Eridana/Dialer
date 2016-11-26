@@ -19,6 +19,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var index: UILabel!
     @IBOutlet weak var roundedView: UIView!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var addImageView: UIImageView!
     weak var cellDelegate : MainModuleCollectionViewCellDelegate?
     
     private var cellData : PhoneDomainModel?
@@ -34,6 +35,23 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         phone.text = data.mapped ? data.phoneNumber : ""
         data.mapped ? configureCellAsMapped() : configureCellAsNotMapped()
         roundedView.backgroundColor = Theme.current.cellBgColor()
+        
+        let mapped = data.mapped
+        let isEditing = EditingState.current.isEditing
+        
+
+        if isEditing {
+            if mapped {
+                setupActionButton()
+                name.isHidden = false
+            } else {
+                name.isHidden = true
+                addImageView.isHidden = false
+            }
+        } else {
+            name.isHidden = false
+            addImageView.isHidden = true
+        }
     }
     
     func configureCellAsMapped() {
@@ -54,10 +72,6 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         actionButton.setImage(image, for: .normal)
         actionButton.setImage(image, for: .selected)
         actionButton.isHidden = false
-    }
-    
-    func hideActionButton() {
-        actionButton.isHidden = true
     }
     
     func actionButtonDidTap(sender : UIButton) {

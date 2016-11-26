@@ -15,13 +15,16 @@ protocol MainModuleViewInput: class {
     func update(withData data: [PhoneDomainModel])
     func update(withError error: String)
     func callPhoneNumber(number : String)
+    func showChangeMappingAlert()
 }
 
 protocol MainModuleViewOutput: class {
     func moduleDidLoad()
     func didSelectItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
-    func userSelectedContactWith(name : String, surname : String, phoneNumber : String)
+    func removeItemDidTap(phoneItem : PhoneDomainModel)
+    func userSelectedContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int)
+    func userDidSelectContactChange()
 }
 
 
@@ -39,6 +42,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     var dataSource = MainModuleCollectionViewDataSource()
     let widthItemsCount = 3
     let heightItemsCount = 4
+    var selectedItemIndex = 0
     
     // MARK: - Life cycle
     func configure() {
@@ -143,6 +147,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedItemIndex = indexPath.item
         output.didSelectItemAtIndex(index: indexPath.item)
     }
     
@@ -153,6 +158,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     // MARK : MainModuleCollectionViewCellDelegate
     
     func actionButtonDidTapFor(phoneItem: PhoneDomainModel) {
+        // remove this mapping
+        output.removeItemDidTap(phoneItem : phoneItem)
     }
     
      // MARK : CNContactPickerDelegate
@@ -172,6 +179,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         let surname = contact.familyName
         var phones = Array<String>()
         
+        let selectedIndex = selectedItemIndex
+        
         for labeledValue in contact.phoneNumbers {
             if labeledValue.value.stringValue != "" {
                 phones.append(labeledValue.value.stringValue)
@@ -181,11 +190,11 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         if phones.count > 1 {
             showNumberSelectionAlert(phoneNumbers: phones, completion: { (selectedPhone) in
                 if let phone = selectedPhone {
-                    self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phone)
+                    self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phone, atIndex: selectedIndex)
                 }
             })
         } else if (phones.count == 1) {
-            self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phones[0])
+            self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phones[0], atIndex: selectedIndex)
         }
     }
     
@@ -213,15 +222,33 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
     
     func showNoPhonesAlert() {
-        
-        let alertController = UIAlertController(title: NSLocalizedString("contact_no_phones_alert_title", comment: ""), message: nil, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: NSLocalizedString("ok_alert_button_title", comment: ""), style: .cancel) { (_) in }
-        alertController.addAction(okAction)
+
+        let alert = alertControllerWith(title: NSLocalizedString("ok_alert_button_title", comment: ""), cancelButtonTitle: NSLocalizedString("ok_alert_button_title", comment: ""))
         
         // it seems contacts controller not dismissing for a while
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
-            self.present(alertController, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         })
+    }
+    
+    func alertControllerWith(title : String? = nil, message : String? = nil, okButtonTitle : String?  = nil, cancelButtonTitle : String,
+                       okCompletion :@escaping () -> () = {}) -> UIAlertController {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: cancelButtonTitle, style: .cancel) { (action) in }
+        
+        alertController.addAction(cancelAction)
+        
+        if let okTitle = okButtonTitle {
+            
+            let okAction = UIAlertAction(title: okTitle, style: .cancel) { (action) in
+                okCompletion()
+            }
+            alertController.addAction(okAction)
+        }
+        
+        return alertController
     }
 }
 
@@ -246,5 +273,22 @@ extension MainModuleViewController: MainModuleViewInput {
                 UIApplication.shared.openURL(url)
             }
         }
+    }
+    
+    func showChangeMappingAlert() {
+        
+        let title = NSLocalizedString("change_mapping_alert_button_title", comment: "")
+        let okButtonTitle = NSLocalizedString("ok_alert_button_title", comment: "")
+        let cancelButtonTitle = NSLocalizedString("no_alert_button_title", comment: "")
+        
+        let alert = alertControllerWith(title: title, okButtonTitle: okButtonTitle, cancelButtonTitle: cancelButtonTitle, okCompletion: {
+            self.output.userDidSelectContactChange()
+        })
+        
+        // it seems contacts controller not dismissing for a while
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
+            self.present(alert, animated: true, completion: nil)
+        })
+        
     }
 }
