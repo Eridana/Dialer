@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Contacts
+import ContactsUI
 
 // MARK: - Interface
 protocol MainModuleViewInput: class {
@@ -20,12 +21,13 @@ protocol MainModuleViewOutput: class {
     func moduleDidLoad()
     func didSelectItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
+    func userSelectedContactWith(name : String, surname : String, phoneNumber : String)
 }
 
 
 // MARK: - View Controller
-final class MainModuleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+final class MainModuleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
+                                    CNContactPickerDelegate, MainModuleCollectionViewCellDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var editButton: UIButton!
@@ -147,8 +149,81 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return sizeForCell()
     }
-}
+    
+    // MARK : MainModuleCollectionViewCellDelegate
+    
+    func actionButtonDidTapFor(phoneItem: PhoneDomainModel) {
+    }
+    
+     // MARK : CNContactPickerDelegate
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        picker.dismiss(animated: false, completion: nil)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        
+        guard contact.phoneNumbers.count > 0 else {
+            showNoPhonesAlert()
+            return
+        }
+        
+        let name = contact.givenName
+        let surname = contact.familyName
+        var phones = Array<String>()
+        
+        for labeledValue in contact.phoneNumbers {
+            if labeledValue.value.stringValue != "" {
+                phones.append(labeledValue.value.stringValue)
+            }
+        }
+        
+        if phones.count > 1 {
+            showNumberSelectionAlert(phoneNumbers: phones, completion: { (selectedPhone) in
+                if let phone = selectedPhone {
+                    self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phone)
+                }
+            })
+        } else if (phones.count == 1) {
+            self.output.userSelectedContactWith(name: name, surname: surname, phoneNumber: phones[0])
+        }
+    }
+    
+    // MARK : Select phone number to binding
+    
+    func showNumberSelectionAlert(phoneNumbers : [String], completion : @escaping (_ selectedNumber : String?) -> ()) {
+        
+        let alertController = UIAlertController(title: nil, message: NSLocalizedString("contact_phone_selection_alert_title", comment: ""), preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel_alert_button_title", comment: ""), style: .cancel) { (action) in
+            completion(nil)
+        }
+        alertController.addAction(cancelAction)
+        
+        for phone in phoneNumbers {
+            alertController.addAction(UIAlertAction(title: phone, style : .default) { (action) in
+                completion(phone)
+            })
+        }
 
+        // it seems contacts controller not dismissing for a while
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
+            self.present(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    func showNoPhonesAlert() {
+        
+        let alertController = UIAlertController(title: NSLocalizedString("contact_no_phones_alert_title", comment: ""), message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: NSLocalizedString("ok_alert_button_title", comment: ""), style: .cancel) { (_) in }
+        alertController.addAction(okAction)
+        
+        // it seems contacts controller not dismissing for a while
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15, execute: {
+            self.present(alertController, animated: true, completion: nil)
+        })
+    }
+}
 
 // MARK: - View Input
 extension MainModuleViewController: MainModuleViewInput {

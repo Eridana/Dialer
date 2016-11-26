@@ -35,7 +35,7 @@ extension MainModuleController: MainModuleInteractorOutput {
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        self.interactor.requestData { [unowned self] (result) in
+        interactor.requestData { [unowned self] (result) in
             switch result {
                 case .success(let data) :
                     self.data = data
@@ -47,14 +47,22 @@ extension MainModuleController: MainModuleViewOutput {
     }
     
     func didSelectItemAtIndex(index : Int) {
-        self.interactor.possibleCallPhoneNumberFor(data: self.data![index])
+        if EditingState.current.isEditing {
+            
+        } else {
+            interactor.possibleCallPhoneNumberFor(data: self.data![index])
+        }
+    }
+    
+    func openContacts() {
+        router.openContacts()
     }
     
     func moveItem(fromIndex: Int, toIndex: Int) {
         
     }
     
-    func editButtonTapped() {
-        self.view.editButtonDidTap()
+    func userSelectedContactWith(name : String, surname : String, phoneNumber : String) {
+        
     }
 }

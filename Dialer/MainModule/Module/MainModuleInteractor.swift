@@ -18,6 +18,7 @@ protocol MainModuleInteractorInput: class {
 //MARK: Output
 protocol MainModuleInteractorOutput: class {
     func callPhoneNumber(number : String)
+    func openContacts()
 }
 
 // MARK: - Interactor
@@ -32,6 +33,8 @@ final class MainModuleInteractor: MainModuleInteractorInput {
     func possibleCallPhoneNumberFor(data: PhoneDomainModel) {
         if (data.mapped) {
             output.callPhoneNumber(number : data.phoneNumber!)
+        } else {
+            output.openContacts()
         }
     }
     
