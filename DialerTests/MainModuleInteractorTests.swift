@@ -17,7 +17,7 @@ class MainModuleInteractorTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         interactor = MainModuleInteractor()
-        let dataSource = PhoneNumbersDataSource()
+        let dataSource = PhoneNumbersDataSourceUserDefaultsBased(withDefaultsKey: "savedTestData2")
         interactor.setDataSource(dataSource: dataSource)
     }
     
