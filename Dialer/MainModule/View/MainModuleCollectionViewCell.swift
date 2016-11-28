@@ -23,6 +23,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     weak var cellDelegate : MainModuleCollectionViewCellDelegate?
     
     private var cellData : PhoneDomainModel?
+    private var isEditing = false
     private var removeMappingButtonImageName = "removeCellButton"
     
     static let reuseIdentifier = "MainModuleCollectionViewCell"
@@ -36,7 +37,6 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         data.mapped ? configureCellAsMapped() : configureCellAsNotMapped()
         
         let mapped = data.mapped
-        let isEditing = EditingState.current.isEditing
         
         if isEditing {
             if mapped {
@@ -51,6 +51,10 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
             name.isHidden = false
             addImageView.isHidden = true
         }
+    }
+    
+    func setEditing(isEditing : Bool) {
+        self.isEditing = isEditing
     }
     
     func configureCellAsMapped() {

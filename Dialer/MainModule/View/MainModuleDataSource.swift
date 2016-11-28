@@ -12,6 +12,7 @@ final class MainModuleCollectionViewDataSource: NSObject {
     var data: [PhoneDomainModel]?
     var moveItemsCompletionHandler: ((Int, Int) -> Void)?
     internal var cellDelegate : MainModuleCollectionViewCellDelegate?
+    internal var isEditing = false
     
     func update(data: [PhoneDomainModel]?) {
         self.data = data
@@ -35,6 +36,10 @@ final class MainModuleCollectionViewDataSource: NSObject {
     func setCellDelegate(delegate : MainModuleCollectionViewCellDelegate) {
         self.cellDelegate = delegate
     }
+    
+    func setEditing(isEditing : Bool) {
+        self.isEditing = isEditing
+    }
 }
 
 extension MainModuleCollectionViewDataSource: UICollectionViewDataSource {
@@ -54,6 +59,7 @@ extension MainModuleCollectionViewDataSource: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainModuleCollectionViewCell.reuseIdentifier, for: indexPath) as? MainModuleCollectionViewCell
             else { return UICollectionViewCell() }
         
+        cell.setEditing(isEditing : self.isEditing)
         cell.fill(withData: item)
         cell.cellDelegate = cellDelegate        
         return cell

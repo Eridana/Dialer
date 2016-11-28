@@ -46,16 +46,16 @@ extension MainModuleController: MainModuleViewOutput {
         }
     }
     
-    func didSelectItemAtIndex(index : Int) {
-        if EditingState.current.isEditing {
-            if interactor.shouldPresentContactsScreenFor(phoneItem: data![index]) {
-                openContacts()
-            } else {
-                view.showChangeMappingAlert()
-            }
+    func didSelectEditItemAtIndex(index : Int) {
+        if interactor.shouldPresentContactsScreenFor(phoneItem: data![index]) {
+            openContacts()
         } else {
-            interactor.possibleCallPhoneNumberFor(data: self.data![index])
+            view.showChangeMappingAlert()
         }
+    }
+    
+    func didSelectCallItemAtIndex(index : Int) {
+        interactor.possibleCallPhoneNumberFor(data: self.data![index])
     }
     
     func openContacts() {
