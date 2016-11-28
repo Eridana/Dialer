@@ -20,7 +20,8 @@ protocol MainModuleViewInput: class {
 
 protocol MainModuleViewOutput: class {
     func moduleDidLoad()
-    func didSelectItemAtIndex(index : Int)
+    func didSelectEditItemAtIndex(index : Int)
+    func didSelectCallItemAtIndex(index : Int)
     func moveItem(fromIndex : Int, toIndex : Int)
     func removeItemDidTap(phoneItem : PhoneDomainModel)
     func userSelectedContactWith(name : String, surname : String, phoneNumber : String, atIndex : Int)
@@ -37,7 +38,6 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var topView: UIView!
     
-    var editingState = EditingState.current
     var output: MainModuleViewOutput!
     var dataSource = MainModuleCollectionViewDataSource()
     let widthItemsCount = 3
@@ -104,8 +104,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     func setEditButtonTitle() {
         
-        let editBtnTitle = editingState.isEditing ? NSLocalizedString("main_done_button_title", comment: "") :
-                                                    NSLocalizedString("main_edit_button_title", comment: "")
+        let editBtnTitle = isEditing ? NSLocalizedString("main_done_button_title", comment: "") :
+                                       NSLocalizedString("main_edit_button_title", comment: "")
         // to prevent title flashing set title, then resize
         editButton.titleLabel?.text = editBtnTitle;
         editButton.setTitle(editBtnTitle, for: .normal)
@@ -132,7 +132,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     // MARK : Events
     
     func editTapped() {
-        editingState.changeState()
+        isEditing = !isEditing
+        dataSource.setEditing(isEditing : isEditing)
         setEditButtonTitle()
         collectionView.reloadData()
     }
@@ -149,7 +150,11 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedItemIndex = indexPath.item
-        output.didSelectItemAtIndex(index: indexPath.item)
+        if isEditing {
+            output.didSelectEditItemAtIndex(index: selectedItemIndex)
+        } else {
+            output.didSelectCallItemAtIndex(index: selectedItemIndex)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
