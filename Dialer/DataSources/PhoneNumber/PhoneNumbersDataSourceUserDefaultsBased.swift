@@ -1,5 +1,5 @@
 //
-//  PhoneNumbersDataSource.swift
+//  PhoneNumbersDataSourceUserDefaultsBased.swift
 //  Dialer
 //
 //  Created by Женя Михайлова on 19.11.16.
@@ -8,12 +8,12 @@
 
 import Result
 
-final class PhoneNumbersDataSource: NSObject, PhoneNumbersDataSourceInterface {
+final class PhoneNumbersDataSourceUserDefaultsBased: PhoneNumbersDataSourceInterface {
 
-    internal var defaultsKeyName = "savedData"
+    private var defaultsKeyName : String
     
-    func setDefaultsKey(name : String) {
-        self.defaultsKeyName = name
+    init(withDefaultsKey keyName : String) {
+        defaultsKeyName = keyName
     }
     
     func save(array:[PhoneDomainModel]) -> Bool {
