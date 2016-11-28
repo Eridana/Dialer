@@ -19,7 +19,7 @@ final class MainModuleAssembly
 		let controller = MainModuleController()
 		let router = MainModuleRouter()
 
-        let dataSource = PhoneNumbersDataSource()
+        let dataSource = PhoneNumbersDataSourceUserDefaultsBased(withDefaultsKey: "savedData")
         
 		interactor.output = controller
         interactor.dataSource = dataSource
