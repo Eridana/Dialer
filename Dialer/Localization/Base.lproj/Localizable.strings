@@ -26,3 +26,8 @@
 // Cells
 
 "item_not_set_title_text" = "Not mapped";
+
+// Tab Bar
+
+"fast_call_tab_item_title" = "Fast call";
+"settings_tab_item_title" = "Settings";

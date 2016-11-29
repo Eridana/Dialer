@@ -26,3 +26,8 @@
 // Cells
 
 "item_not_set_title_text" = "Не задано";
+
+// Tab Bar
+
+"fast_call_tab_item_title" = "Быстрый набор";
+"settings_tab_item_title" = "Настройки";
