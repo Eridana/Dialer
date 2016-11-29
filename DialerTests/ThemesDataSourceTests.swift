@@ -27,24 +27,9 @@ class ThemesDataSourceTests: XCTestCase {
     
     func testSaveAndLoadTheme() {
         
-        self.dataSource?.saveTheme(theme: .Light)
-        let theme = self.dataSource?.loadTheme()
+        dataSource?.setCurrentThemeBy(identifier: .light)
+        let theme = dataSource?.currentTheme()
         
-        XCTAssert(theme == .Light)
-    }
-    
-    func testSwitchTheme() {
-        
-        Theme.current.setCurrentTheme(theme: .Dark);
-        XCTAssert(Theme.current.currentTheme == .Dark)
-        
-        let theme = self.dataSource?.loadTheme()
-        XCTAssert(theme == .Dark)
-        
-        Theme.current.setCurrentTheme(theme: .Light);
-        XCTAssert(Theme.current.currentTheme == .Light)
-        
-        let theme2 = self.dataSource?.loadTheme()
-        XCTAssert(theme2 == .Light)
+        XCTAssert(theme?.identifier() == .light)
     }
 }

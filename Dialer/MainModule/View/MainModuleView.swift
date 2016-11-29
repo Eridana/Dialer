@@ -40,6 +40,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     var output: MainModuleViewOutput!
     var dataSource = MainModuleCollectionViewDataSource()
+    var themesDataSource = ThemesDataSource()
     let widthItemsCount = 3
     let heightItemsCount = 4
     var selectedItemIndex = 0
@@ -74,17 +75,20 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
 
     func setupTheme() {
         
-        let theme = Theme.current
+        let theme = themesDataSource.currentTheme()
         
-        bgImageView.image = theme.mainBackgroundImage()
+        bgImageView.image = theme.backgroundImage()
         editButton.setTitleColor(theme.mappedTextColor(), for: .normal)
         editButton.setTitleColor(theme.mappedTextColor(), for: .highlighted)
         themeSegmentedControl.tintColor = theme.mappedTextColor()
-        topView.backgroundColor = theme.collectionBgColor()
-        collectionView.backgroundColor = theme.collectionBgColor()
-        UIApplication.shared.statusBarStyle = theme.barStyle()
+        topView.backgroundColor = theme.collectionBackgroundColor()
+        collectionView.backgroundColor = theme.collectionBackgroundColor()
+        UIApplication.shared.statusBarStyle = theme.statusBarStyle()
+    }
+    
+    func setupSegmentedControl() {
         
-        if theme.currentTheme == .Dark {
+        if themesDataSource.currentTheme().identifier() == .dark {
             self.themeSegmentedControl.selectedSegmentIndex = 0
         } else {
             self.themeSegmentedControl.selectedSegmentIndex = 1
@@ -140,9 +144,9 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     func themeChanged(sender : UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
-            Theme.current.setCurrentTheme(theme: .Dark);
+            themesDataSource.setCurrentThemeBy(identifier: .dark)
         } else {
-            Theme.current.setCurrentTheme(theme: .Light);
+            themesDataSource.setCurrentThemeBy(identifier: .light)
         }
         reloadTheme()
     }

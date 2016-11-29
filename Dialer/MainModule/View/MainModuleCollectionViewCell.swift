@@ -25,6 +25,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     private var cellData : PhoneDomainModel?
     private var isEditing = false
     private var removeMappingButtonImageName = "removeCellButton"
+    private var themesDataSource = ThemesDataSource()
     
     static let reuseIdentifier = "MainModuleCollectionViewCell"
     
@@ -58,15 +59,17 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellAsMapped() {
-        roundedView.layer.borderColor = Theme.current.mappedBorderColor().cgColor
-        roundedView.backgroundColor = Theme.current.mappedCellBgColor()
-        setTextColorAs(color: Theme.current.mappedTextColor())
+        let theme = themesDataSource.currentTheme()
+        roundedView.layer.borderColor = theme.mappedBorderColor().cgColor
+        roundedView.backgroundColor = theme.mappedCellBackgroundColor()
+        setTextColorAs(color: theme.mappedTextColor())
     }
     
     func configureCellAsNotMapped() {
-        roundedView.layer.borderColor = Theme.current.notMappedBorderColor().cgColor
-        roundedView.backgroundColor = Theme.current.notMappedCellBgColor()
-        setTextColorAs(color: Theme.current.notMappedTextColor())
+        let theme = themesDataSource.currentTheme()
+        roundedView.layer.borderColor = theme.notMappedBorderColor().cgColor
+        roundedView.backgroundColor = theme.notMappedCellBackgroundColor()
+        setTextColorAs(color: theme.notMappedTextColor())
     }
     
     func setTextColorAs(color : UIColor) {
