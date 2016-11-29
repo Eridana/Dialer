@@ -14,9 +14,9 @@ target 'Dialer' do
     shared_pods
 end
 
-#target 'Dialer-Tests' do
-#    shared_pods
-#end
+target 'DialerTests' do
+    shared_pods
+end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|

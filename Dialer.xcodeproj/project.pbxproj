@@ -7,29 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */; };
+		3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */; };
+		3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812111DE6B9D8005B8EDC /* Style.swift */; };
+		3F3812141DE6C067005B8EDC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812131DE6C067005B8EDC /* Theme.swift */; };
 		3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61931DE2E745000B06E5 /* AppDelegate.swift */; };
 		3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619A1DE2E745000B06E5 /* Assets.xcassets */; };
 		3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */; };
 		3FAC61F51DE325A8000B06E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC61F21DE325A8000B06E5 /* Localizable.strings */; };
 		3FAC61FA1DE325B9000B06E5 /* PhoneDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61F81DE325B9000B06E5 /* PhoneDomainModel.swift */; };
-		3FAC61FF1DE325CD000B06E5 /* BaseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61FD1DE325CD000B06E5 /* BaseDataManager.swift */; };
-		3FAC62001DE325CD000B06E5 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61FE1DE325CD000B06E5 /* BaseObject.swift */; };
 		3FAC620E1DE326E0000B06E5 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62021DE326E0000B06E5 /* MainModuleAssembly.swift */; };
 		3FAC620F1DE326E0000B06E5 /* MainModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62031DE326E0000B06E5 /* MainModuleInterface.swift */; };
 		3FAC62101DE326E0000B06E5 /* MainModuleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62051DE326E0000B06E5 /* MainModuleController.swift */; };
 		3FAC62111DE326E0000B06E5 /* MainModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62061DE326E0000B06E5 /* MainModuleInteractor.swift */; };
 		3FAC62121DE326E0000B06E5 /* MainModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62071DE326E0000B06E5 /* MainModuleRouter.swift */; };
 		3FAC62131DE326E0000B06E5 /* MainModuleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62091DE326E0000B06E5 /* MainModuleDataSource.swift */; };
-		3FAC62161DE326E0000B06E5 /* MainModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC620C1DE326E0000B06E5 /* MainModuleView.swift */; };
-		3FAC62171DE326E0000B06E5 /* MainModuleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC620D1DE326E0000B06E5 /* MainModuleViewController.xib */; };
-		3FAC621A1DE3271F000B06E5 /* PhoneObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62191DE3271F000B06E5 /* PhoneObject.swift */; };
+		3FAC621A1DE3271F000B06E5 /* PhoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62191DE3271F000B06E5 /* PhoneEntity.swift */; };
 		3FAC621D1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC621B1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift */; };
 		3FAC621E1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC621C1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib */; };
-		3FAC62221DE32ED7000B06E5 /* MainModuleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */; };
+		3FAC62311DE4854A000B06E5 /* PhoneNumbersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62301DE4854A000B06E5 /* PhoneNumbersDataSource.swift */; };
+		3FAC62391DE4859F000B06E5 /* DialerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62381DE4859F000B06E5 /* DialerTests.swift */; };
+		3FAC62411DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62401DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift */; };
+		3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62461DE4C99B000B06E5 /* MainModuleView.swift */; };
+		3FAC62491DE4C99B000B06E5 /* MainModuleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC62471DE4C99B000B06E5 /* MainModuleViewController.xib */; };
+		3FAC624B1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC624A1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift */; };
 		4B3DEF859DA2C1D8A5D925D8 /* Pods_Dialer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3FAC623B1DE4859F000B06E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FAC61881DE2E744000B06E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FAC618F1DE2E744000B06E5;
+			remoteInfo = Dialer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInteractorTests.swift; sourceTree = "<group>"; };
+		3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Rgb.swift"; sourceTree = "<group>"; };
+		3F3812111DE6B9D8005B8EDC /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		3F3812131DE6C067005B8EDC /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3FAC61901DE2E745000B06E5 /* Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dialer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC61931DE2E745000B06E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FAC619A1DE2E745000B06E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,20 +57,23 @@
 		3FAC61F31DE325A8000B06E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3FAC61F41DE325A8000B06E5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3FAC61F81DE325B9000B06E5 /* PhoneDomainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneDomainModel.swift; sourceTree = "<group>"; };
-		3FAC61FD1DE325CD000B06E5 /* BaseDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataManager.swift; sourceTree = "<group>"; };
-		3FAC61FE1DE325CD000B06E5 /* BaseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		3FAC62021DE326E0000B06E5 /* MainModuleAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
 		3FAC62031DE326E0000B06E5 /* MainModuleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInterface.swift; sourceTree = "<group>"; };
 		3FAC62051DE326E0000B06E5 /* MainModuleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleController.swift; sourceTree = "<group>"; };
 		3FAC62061DE326E0000B06E5 /* MainModuleInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInteractor.swift; sourceTree = "<group>"; };
 		3FAC62071DE326E0000B06E5 /* MainModuleRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleRouter.swift; sourceTree = "<group>"; };
 		3FAC62091DE326E0000B06E5 /* MainModuleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleDataSource.swift; sourceTree = "<group>"; };
-		3FAC620C1DE326E0000B06E5 /* MainModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleView.swift; sourceTree = "<group>"; };
-		3FAC620D1DE326E0000B06E5 /* MainModuleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleViewController.xib; sourceTree = "<group>"; };
-		3FAC62191DE3271F000B06E5 /* PhoneObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneObject.swift; sourceTree = "<group>"; };
+		3FAC62191DE3271F000B06E5 /* PhoneEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneEntity.swift; sourceTree = "<group>"; };
 		3FAC621B1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FAC621C1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleCollectionViewCell.xib; sourceTree = "<group>"; };
-		3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleDataManager.swift; sourceTree = "<group>"; };
+		3FAC62301DE4854A000B06E5 /* PhoneNumbersDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbersDataSource.swift; sourceTree = "<group>"; };
+		3FAC62361DE4859F000B06E5 /* DialerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DialerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FAC62381DE4859F000B06E5 /* DialerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialerTests.swift; sourceTree = "<group>"; };
+		3FAC623A1DE4859F000B06E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FAC62401DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbersDataSourceTests.swift; sourceTree = "<group>"; };
+		3FAC62461DE4C99B000B06E5 /* MainModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleView.swift; sourceTree = "<group>"; };
+		3FAC62471DE4C99B000B06E5 /* MainModuleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleViewController.xib; sourceTree = "<group>"; };
+		3FAC624A1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbersDataSourceInterface.swift; sourceTree = "<group>"; };
 		66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.debug.xcconfig"; sourceTree = "<group>"; };
 		8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.release.xcconfig"; sourceTree = "<group>"; };
 		B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,13 +88,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FAC62331DE4859F000B06E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F38120D1DE6130B005B8EDC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3F38120E1DE6131D005B8EDC /* UIColor+Rgb.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3F3812101DE6B952005B8EDC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3F3812111DE6B9D8005B8EDC /* Style.swift */,
+				3F3812131DE6C067005B8EDC /* Theme.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		3FAC61871DE2E744000B06E5 = {
 			isa = PBXGroup;
 			children = (
 				3FAC61921DE2E745000B06E5 /* Dialer */,
+				3FAC62371DE4859F000B06E5 /* DialerTests */,
 				3FAC61911DE2E745000B06E5 /* Products */,
 				EE53B611490C0D3A97621C7C /* Pods */,
 				F5255077970F50FBC07545FA /* Frameworks */,
@@ -83,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				3FAC61901DE2E745000B06E5 /* Dialer.app */,
+				3FAC62361DE4859F000B06E5 /* DialerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +140,9 @@
 			children = (
 				3FAC61931DE2E745000B06E5 /* AppDelegate.swift */,
 				3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */,
+				3F3812101DE6B952005B8EDC /* Helpers */,
+				3F38120D1DE6130B005B8EDC /* Extensions */,
+				3FAC622F1DE48531000B06E5 /* DataSources */,
 				3FAC61FC1DE325CD000B06E5 /* BaseLayer */,
 				3FAC61F61DE325B9000B06E5 /* Models */,
 				3FAC62011DE326E0000B06E5 /* MainModule */,
@@ -146,8 +197,6 @@
 		3FAC61FC1DE325CD000B06E5 /* BaseLayer */ = {
 			isa = PBXGroup;
 			children = (
-				3FAC61FD1DE325CD000B06E5 /* BaseDataManager.swift */,
-				3FAC61FE1DE325CD000B06E5 /* BaseObject.swift */,
 			);
 			path = BaseLayer;
 			sourceTree = "<group>";
@@ -169,7 +218,6 @@
 				3FAC62051DE326E0000B06E5 /* MainModuleController.swift */,
 				3FAC62061DE326E0000B06E5 /* MainModuleInteractor.swift */,
 				3FAC62071DE326E0000B06E5 /* MainModuleRouter.swift */,
-				3FAC62211DE32ED7000B06E5 /* MainModuleDataManager.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -180,8 +228,8 @@
 				3FAC62091DE326E0000B06E5 /* MainModuleDataSource.swift */,
 				3FAC621B1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift */,
 				3FAC621C1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib */,
-				3FAC620C1DE326E0000B06E5 /* MainModuleView.swift */,
-				3FAC620D1DE326E0000B06E5 /* MainModuleViewController.xib */,
+				3FAC62461DE4C99B000B06E5 /* MainModuleView.swift */,
+				3FAC62471DE4C99B000B06E5 /* MainModuleViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,9 +237,29 @@
 		3FAC62181DE3271F000B06E5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				3FAC62191DE3271F000B06E5 /* PhoneObject.swift */,
+				3FAC62191DE3271F000B06E5 /* PhoneEntity.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		3FAC622F1DE48531000B06E5 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				3FAC62301DE4854A000B06E5 /* PhoneNumbersDataSource.swift */,
+				3FAC624A1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		3FAC62371DE4859F000B06E5 /* DialerTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */,
+				3FAC62401DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift */,
+				3FAC62381DE4859F000B06E5 /* DialerTests.swift */,
+				3FAC623A1DE4859F000B06E5 /* Info.plist */,
+			);
+			path = DialerTests;
 			sourceTree = "<group>";
 		};
 		EE53B611490C0D3A97621C7C /* Pods */ = {
@@ -234,6 +302,24 @@
 			productReference = 3FAC61901DE2E745000B06E5 /* Dialer.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3FAC62351DE4859F000B06E5 /* DialerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FAC623D1DE4859F000B06E5 /* Build configuration list for PBXNativeTarget "DialerTests" */;
+			buildPhases = (
+				3FAC62321DE4859F000B06E5 /* Sources */,
+				3FAC62331DE4859F000B06E5 /* Frameworks */,
+				3FAC62341DE4859F000B06E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3FAC623C1DE4859F000B06E5 /* PBXTargetDependency */,
+			);
+			name = DialerTests;
+			productName = DialerTests;
+			productReference = 3FAC62361DE4859F000B06E5 /* DialerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,6 +334,12 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 9377R37M3Q;
 						ProvisioningStyle = Automatic;
+					};
+					3FAC62351DE4859F000B06E5 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 9377R37M3Q;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3FAC618F1DE2E744000B06E5;
 					};
 				};
 			};
@@ -266,6 +358,7 @@
 			projectRoot = "";
 			targets = (
 				3FAC618F1DE2E744000B06E5 /* Dialer */,
+				3FAC62351DE4859F000B06E5 /* DialerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,10 +369,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */,
+				3FAC62491DE4C99B000B06E5 /* MainModuleViewController.xib in Resources */,
 				3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */,
 				3FAC621E1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib in Resources */,
 				3FAC61F51DE325A8000B06E5 /* Localizable.strings in Resources */,
-				3FAC62171DE326E0000B06E5 /* MainModuleViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FAC62341DE4859F000B06E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,20 +442,40 @@
 				3FAC62111DE326E0000B06E5 /* MainModuleInteractor.swift in Sources */,
 				3FAC62121DE326E0000B06E5 /* MainModuleRouter.swift in Sources */,
 				3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */,
-				3FAC61FF1DE325CD000B06E5 /* BaseDataManager.swift in Sources */,
-				3FAC62161DE326E0000B06E5 /* MainModuleView.swift in Sources */,
+				3FAC624B1DE59F66000B06E5 /* PhoneNumbersDataSourceInterface.swift in Sources */,
 				3FAC62101DE326E0000B06E5 /* MainModuleController.swift in Sources */,
-				3FAC621A1DE3271F000B06E5 /* PhoneObject.swift in Sources */,
-				3FAC62221DE32ED7000B06E5 /* MainModuleDataManager.swift in Sources */,
+				3F3812121DE6B9D8005B8EDC /* Style.swift in Sources */,
+				3FAC621A1DE3271F000B06E5 /* PhoneEntity.swift in Sources */,
 				3FAC621D1DE329F5000B06E5 /* MainModuleCollectionViewCell.swift in Sources */,
-				3FAC62001DE325CD000B06E5 /* BaseObject.swift in Sources */,
 				3FAC620F1DE326E0000B06E5 /* MainModuleInterface.swift in Sources */,
+				3F38120F1DE6131D005B8EDC /* UIColor+Rgb.swift in Sources */,
 				3FAC62131DE326E0000B06E5 /* MainModuleDataSource.swift in Sources */,
+				3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */,
+				3F3812141DE6C067005B8EDC /* Theme.swift in Sources */,
+				3FAC62311DE4854A000B06E5 /* PhoneNumbersDataSource.swift in Sources */,
 				3FAC61FA1DE325B9000B06E5 /* PhoneDomainModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FAC62321DE4859F000B06E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */,
+				3FAC62411DE485DF000B06E5 /* PhoneNumbersDataSourceTests.swift in Sources */,
+				3FAC62391DE4859F000B06E5 /* DialerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FAC623C1DE4859F000B06E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FAC618F1DE2E744000B06E5 /* Dialer */;
+			targetProxy = 3FAC623B1DE4859F000B06E5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */ = {
@@ -497,6 +617,34 @@
 			};
 			name = Release;
 		};
+		3FAC623E1DE4859F000B06E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9377R37M3Q;
+				INFOPLIST_FILE = DialerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mikhailova.evgeniya.DialerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dialer.app/Dialer";
+			};
+			name = Debug;
+		};
+		3FAC623F1DE4859F000B06E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9377R37M3Q;
+				INFOPLIST_FILE = DialerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.mikhailova.evgeniya.DialerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dialer.app/Dialer";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -514,6 +662,15 @@
 			buildConfigurations = (
 				3FAC61A31DE2E745000B06E5 /* Debug */,
 				3FAC61A41DE2E745000B06E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FAC623D1DE4859F000B06E5 /* Build configuration list for PBXNativeTarget "DialerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FAC623E1DE4859F000B06E5 /* Debug */,
+				3FAC623F1DE4859F000B06E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

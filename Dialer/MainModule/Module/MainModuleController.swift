@@ -25,8 +25,13 @@ final class MainModuleController: MainModuleModuleInput {
 
 // MARK: - Interactor Output
 extension MainModuleController: MainModuleInteractorOutput {
+    
     func callPhoneNumber(number : String) {
         self.view.callPhoneNumber(number : number)
+    }
+    
+    func reloadTheme() {
+        self.view.reloadTheme()
     }
 }
 
@@ -34,10 +39,13 @@ extension MainModuleController: MainModuleInteractorOutput {
 extension MainModuleController: MainModuleViewOutput {
     
     func moduleDidLoad() {
-        self.interactor.requestData { (result) in
+        self.interactor.requestData { [unowned self] (result) in
             switch result {
-                case .success(let data) : self.view.update(withData:data)
-                case .failure(let error): self.view.update(withError:error.description)
+                case .success(let data) :
+                    self.data = data
+                    self.view.update(withData:data)
+                case .failure(let error):
+                    self.view.update(withError:error.description)
             }
         }
     }
@@ -50,7 +58,11 @@ extension MainModuleController: MainModuleViewOutput {
         
     }
     
-    func editButtonDidTap() {
-        
+    func editButtonTapped() {
+        self.view.editButtonDidTap()
+    }
+    
+    func themeSelectedWith(index: Int) {
+        self.interactor.switchThemeFor(index: index)
     }
 }
