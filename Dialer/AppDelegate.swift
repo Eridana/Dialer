@@ -15,17 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = MainModuleAssembly.createModule { _ in }
-        //let navigationController = createRootNavigationController(rootViewController: viewController)
-        self.window?.rootViewController = viewController
+        let tabBarController = TabBarModuleAssembly.createModule { _ in }
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()        
         return true
-    }
-    
-    func createRootNavigationController(rootViewController : UIViewController) -> UINavigationController {
-        let navigationController = UINavigationController.init(rootViewController: rootViewController)
-        navigationController.navigationBar.barStyle = .blackTranslucent
-        return navigationController
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

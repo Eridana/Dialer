@@ -54,23 +54,21 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         super.viewDidLoad()
         
         localize()
-        setupCollectionView()
-        setupTheme()
-        
-        editButton .addTarget(self, action: #selector(editTapped), for: .touchUpInside)
-        themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
-        
-        dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
-            self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
-        })
-        dataSource.registerCellFor(collectionView: collectionView)
-        dataSource.setCellDelegate(delegate: self)
+        setupDataSource()
+        setupUI()
         
         output.moduleDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    func setupUI() {
+        setupCollectionView()
+        setupTheme()
+        setupSegmentedControl()
+        editButton.addTarget(self, action: #selector(editTapped), for: .touchUpInside)
     }
 
     func setupTheme() {
@@ -88,6 +86,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     func setupSegmentedControl() {
         
+        themeSegmentedControl.addTarget(self, action: #selector(themeChanged(sender:)), for: .valueChanged)
+        
         if themesDataSource.currentTheme().identifier() == .dark {
             self.themeSegmentedControl.selectedSegmentIndex = 0
         } else {
@@ -98,6 +98,14 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     func setupCollectionView() {
         collectionView.dataSource = dataSource
         collectionView.delegate = self
+    }
+    
+    func setupDataSource() {
+        dataSource.setMoveItemsCompletionHandlerAs(handler : { [unowned self] (fromIndex, toIndex) in
+            self.output.moveItem(fromIndex: fromIndex, toIndex: toIndex)
+            })
+        dataSource.registerCellFor(collectionView: collectionView)
+        dataSource.setCellDelegate(delegate: self)
     }
     
     func localize() {
@@ -129,7 +137,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         let size = view.frame.size
         let spacing = 4;
         let kWidth = size.width / CGFloat(widthItemsCount) - CGFloat((widthItemsCount - 1) * spacing)
-        let kHeight = size.height / CGFloat(heightItemsCount) - CGFloat((heightItemsCount - 1) * (spacing * 2))
+        let kHeight = (size.height - 45) / CGFloat(heightItemsCount) - CGFloat((heightItemsCount - 1) * (spacing * 2))
         return CGSize(width: CGFloat(kWidth), height: CGFloat(kHeight))
     }
     
