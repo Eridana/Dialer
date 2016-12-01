@@ -42,7 +42,15 @@ class LightTheme: StyleInterface {
         return UIImage.init(named: "lightBackground")!
     }
     
+    func settingsBackgroundImage() -> UIImage {
+        return UIImage.init(named: "lightBackground")!
+    }
+    
     func statusBarStyle() -> UIStatusBarStyle {
+        return .default
+    }
+    
+    func barStyle() -> UIBarStyle {
         return .default
     }
     

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152474B7E521CD9A3325ED3E /* SettingsModuleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3D469842396F172F72F73F /* SettingsModuleController.swift */; };
+		28D808D62E4F28F1E54D802D /* SettingsModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A5988329F94886C3DB6B18 /* SettingsModuleInterface.swift */; };
+		376CC97BF92825EC910CEB79 /* SettingsModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFE3296A2EC2D25C512C72B /* SettingsModuleRouter.swift */; };
 		3F32A98E1DEC5BA40009F462 /* PhoneNumbersDataSourceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32A98C1DEC5BA40009F462 /* PhoneNumbersDataSourceInterface.swift */; };
 		3F32A98F1DEC5BA40009F462 /* PhoneNumbersDataSourceUserDefaultsBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32A98D1DEC5BA40009F462 /* PhoneNumbersDataSourceUserDefaultsBased.swift */; };
 		3F32A9971DEC8B250009F462 /* StyleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32A9961DEC8B250009F462 /* StyleInterface.swift */; };
@@ -22,6 +25,8 @@
 		3F32A9D61DED87DF0009F462 /* TabBarModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F32A9D01DED87DF0009F462 /* TabBarModuleView.swift */; };
 		3F38120C1DE60DB2005B8EDC /* MainModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */; };
 		3F3812181DE70B9E005B8EDC /* ThemesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812171DE70B9E005B8EDC /* ThemesDataSourceTests.swift */; };
+		3F4EFD031DF07E6200F4B78D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4EFD021DF07E6200F4B78D /* Settings.storyboard */; };
+		3F4EFD051DF0869400F4B78D /* SettingsDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */; };
 		3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61931DE2E745000B06E5 /* AppDelegate.swift */; };
 		3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619A1DE2E745000B06E5 /* Assets.xcassets */; };
 		3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */; };
@@ -41,6 +46,9 @@
 		3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC62461DE4C99B000B06E5 /* MainModuleView.swift */; };
 		3FAC62491DE4C99B000B06E5 /* MainModuleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC62471DE4C99B000B06E5 /* MainModuleViewController.xib */; };
 		4B3DEF859DA2C1D8A5D925D8 /* Pods_Dialer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */; };
+		592EEFA55ECC6EF19F8989B5 /* SettingsModuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858178165FAA909BF4C54C40 /* SettingsModuleView.swift */; };
+		5CDB41CC76DBBF149ABF19C1 /* SettingsModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D761106B3327972C5D2105 /* SettingsModuleInteractor.swift */; };
+		B301E2E19693B140567C7E9C /* SettingsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D370ADD6A82803DD0F2F000D /* SettingsModuleAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F3D469842396F172F72F73F /* SettingsModuleController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleController.swift; sourceTree = "<group>"; };
+		37D761106B3327972C5D2105 /* SettingsModuleInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleInteractor.swift; sourceTree = "<group>"; };
 		3F32A98C1DEC5BA40009F462 /* PhoneNumbersDataSourceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbersDataSourceInterface.swift; sourceTree = "<group>"; };
 		3F32A98D1DEC5BA40009F462 /* PhoneNumbersDataSourceUserDefaultsBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumbersDataSourceUserDefaultsBased.swift; sourceTree = "<group>"; };
 		3F32A9961DEC8B250009F462 /* StyleInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleInterface.swift; sourceTree = "<group>"; };
@@ -69,6 +79,8 @@
 		3F32A9D01DED87DF0009F462 /* TabBarModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarModuleView.swift; sourceTree = "<group>"; };
 		3F38120B1DE60DB2005B8EDC /* MainModuleInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleInteractorTests.swift; sourceTree = "<group>"; };
 		3F3812171DE70B9E005B8EDC /* ThemesDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesDataSourceTests.swift; sourceTree = "<group>"; };
+		3F4EFD021DF07E6200F4B78D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDomainModel.swift; sourceTree = "<group>"; };
 		3FAC61901DE2E745000B06E5 /* Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dialer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC61931DE2E745000B06E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FAC619A1DE2E745000B06E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,8 +105,12 @@
 		3FAC62461DE4C99B000B06E5 /* MainModuleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModuleView.swift; sourceTree = "<group>"; };
 		3FAC62471DE4C99B000B06E5 /* MainModuleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainModuleViewController.xib; sourceTree = "<group>"; };
 		66E254B04CCE4AF5B2526DA8 /* Pods-Dialer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.debug.xcconfig"; sourceTree = "<group>"; };
+		7AFE3296A2EC2D25C512C72B /* SettingsModuleRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleRouter.swift; sourceTree = "<group>"; };
+		858178165FAA909BF4C54C40 /* SettingsModuleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleView.swift; sourceTree = "<group>"; };
 		8FB994116024C000364BB58B /* Pods-Dialer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dialer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dialer/Pods-Dialer.release.xcconfig"; sourceTree = "<group>"; };
 		B5FBB66D7008BAF51DAB8DD3 /* Pods_Dialer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dialer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D370ADD6A82803DD0F2F000D /* SettingsModuleAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleAssembly.swift; sourceTree = "<group>"; };
+		E7A5988329F94886C3DB6B18 /* SettingsModuleInterface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsModuleInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +132,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1435B07CF03467741AD4DB04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				858178165FAA909BF4C54C40 /* SettingsModuleView.swift */,
+				3F4EFD021DF07E6200F4B78D /* Settings.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3F32A98B1DEC5BA40009F462 /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +244,7 @@
 				3FAC622F1DE48531000B06E5 /* DataSources */,
 				3FAC61F61DE325B9000B06E5 /* Models */,
 				3FAC62011DE326E0000B06E5 /* MainModule */,
+				451478EACCCF7FB5C6A9F211 /* SettingsModule */,
 				3F32A9C81DED87DF0009F462 /* TabBarModule */,
 				3FAC61D91DE32570000B06E5 /* Resources */,
 				3FAC61F11DE325A8000B06E5 /* Localization */,
@@ -264,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				3FAC61F81DE325B9000B06E5 /* PhoneDomainModel.swift */,
+				3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */,
 			);
 			path = DomainModels;
 			sourceTree = "<group>";
@@ -328,6 +355,27 @@
 				3FAC623A1DE4859F000B06E5 /* Info.plist */,
 			);
 			path = DialerTests;
+			sourceTree = "<group>";
+		};
+		451478EACCCF7FB5C6A9F211 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				E7A5988329F94886C3DB6B18 /* SettingsModuleInterface.swift */,
+				D370ADD6A82803DD0F2F000D /* SettingsModuleAssembly.swift */,
+				DBF5333533DBD870725C08CB /* Module */,
+				1435B07CF03467741AD4DB04 /* View */,
+			);
+			path = SettingsModule;
+			sourceTree = "<group>";
+		};
+		DBF5333533DBD870725C08CB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				37D761106B3327972C5D2105 /* SettingsModuleInteractor.swift */,
+				2F3D469842396F172F72F73F /* SettingsModuleController.swift */,
+				7AFE3296A2EC2D25C512C72B /* SettingsModuleRouter.swift */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 		EE53B611490C0D3A97621C7C /* Pods */ = {
@@ -439,6 +487,7 @@
 				3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */,
 				3FAC62491DE4C99B000B06E5 /* MainModuleViewController.xib in Resources */,
 				3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */,
+				3F4EFD031DF07E6200F4B78D /* Settings.storyboard in Resources */,
 				3FAC621E1DE329F5000B06E5 /* MainModuleCollectionViewCell.xib in Resources */,
 				3FAC61F51DE325A8000B06E5 /* Localizable.strings in Resources */,
 			);
@@ -511,6 +560,7 @@
 				3FAC62111DE326E0000B06E5 /* MainModuleInteractor.swift in Sources */,
 				3F32A9D51DED87DF0009F462 /* TabBarModuleInterface.swift in Sources */,
 				3FAC62121DE326E0000B06E5 /* MainModuleRouter.swift in Sources */,
+				3F4EFD051DF0869400F4B78D /* SettingsDomainModel.swift in Sources */,
 				3F32A9D31DED87DF0009F462 /* TabBarModuleRouter.swift in Sources */,
 				3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */,
 				3FAC62101DE326E0000B06E5 /* MainModuleController.swift in Sources */,
@@ -530,6 +580,12 @@
 				3F32A99C1DEC8DC20009F462 /* LightTheme.swift in Sources */,
 				3F32A9D61DED87DF0009F462 /* TabBarModuleView.swift in Sources */,
 				3F32A9971DEC8B250009F462 /* StyleInterface.swift in Sources */,
+				28D808D62E4F28F1E54D802D /* SettingsModuleInterface.swift in Sources */,
+				B301E2E19693B140567C7E9C /* SettingsModuleAssembly.swift in Sources */,
+				5CDB41CC76DBBF149ABF19C1 /* SettingsModuleInteractor.swift in Sources */,
+				152474B7E521CD9A3325ED3E /* SettingsModuleController.swift in Sources */,
+				376CC97BF92825EC910CEB79 /* SettingsModuleRouter.swift in Sources */,
+				592EEFA55ECC6EF19F8989B5 /* SettingsModuleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
