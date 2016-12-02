@@ -23,6 +23,8 @@ protocol StyleInterface: class {
     func mappedBorderColor() -> UIColor
     func notMappedBorderColor() -> UIColor
     func backgroundImage() -> UIImage
+    func settingsBackgroundImage() -> UIImage
     func statusBarStyle() -> UIStatusBarStyle
+    func barStyle() -> UIBarStyle
     func identifier() -> ThemeIdentifier
 }

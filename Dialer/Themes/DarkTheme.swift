@@ -42,8 +42,16 @@ class DarkTheme: StyleInterface {
         return UIImage.init(named: "darkBackground")!
     }
     
+    func settingsBackgroundImage() -> UIImage {
+        return UIImage.init(named: "darkBackground")!
+    }
+    
     func statusBarStyle() -> UIStatusBarStyle {
         return .lightContent
+    }
+    
+    func barStyle() -> UIBarStyle {
+        return .black
     }
     
     func identifier() -> ThemeIdentifier {

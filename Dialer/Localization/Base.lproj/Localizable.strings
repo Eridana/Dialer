@@ -31,3 +31,13 @@
 
 "fast_call_tab_item_title" = "Fast call";
 "settings_tab_item_title" = "Settings";
+
+// Settings
+
+"settings_display_settings_title" = "Display settings";
+"settings_first_name_last_name" = "First name, last name";
+"settings_last_name_first_name" = "Last name, first name";
+"settings_first_name_only" = "First name only";
+"settings_about_app_title" = "About application";
+"settings_see_on_github_title" = "Source code on Github";
+

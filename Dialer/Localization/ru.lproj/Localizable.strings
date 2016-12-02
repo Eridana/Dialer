@@ -31,3 +31,13 @@
 
 "fast_call_tab_item_title" = "Быстрый набор";
 "settings_tab_item_title" = "Настройки";
+
+
+// Settings
+
+"settings_display_settings_title" = "Настройки отображения";
+"settings_first_name_last_name" = "Имя, фамилия";
+"settings_last_name_first_name" = "Фамилия, имя";
+"settings_first_name_only" = "Только имя";
+"settings_about_app_title" = "О приложении";
+"settings_see_on_github_title" = "Посмотреть код на Github";

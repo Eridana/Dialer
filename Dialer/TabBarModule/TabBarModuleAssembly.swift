@@ -29,7 +29,8 @@ final class TabBarModuleAssembly
 		view.output = controller
         
         let mainViewController = MainModuleAssembly.createModule { _ in }
-        let settingsViewController = UIViewController()
+        let settingsViewController = SettingsModuleAssembly.createModule { _ in }
+        
         view.setViews(views: [mainViewController, settingsViewController])
 
 		router.view = view
