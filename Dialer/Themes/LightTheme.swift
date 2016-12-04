@@ -10,16 +10,20 @@ import UIKit
 
 class LightTheme: StyleInterface {
     
+    func topViewBackgroundColor() -> UIColor {
+        return UIColor.white.withAlphaComponent(0.6)
+    }
+    
     func collectionBackgroundColor() -> UIColor {
-        return UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.25)
+        return UIColor.clear
     }
     
     func mappedCellBackgroundColor() -> UIColor {
-        return UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)
+        return UIColor.white.withAlphaComponent(0.45)
     }
     
     func notMappedCellBackgroundColor() -> UIColor {
-        return UIColor.init(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 0.5)
+        return UIColor.white.withAlphaComponent(0.45)
     }
     
     func mappedTextColor() -> UIColor {
@@ -27,23 +31,39 @@ class LightTheme: StyleInterface {
     }
     
     func notMappedTextColor() -> UIColor {
-        return UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
+        return UIColor.black.withAlphaComponent(0.4)
     }
     
     func mappedBorderColor() -> UIColor {
-        return UIColor.black
+        return UIColor.clear
     }
     
     func notMappedBorderColor() -> UIColor {
-        return UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
+        return UIColor.clear
+    }
+    
+    func tableHeaderColor() -> UIColor {
+        return UIColor.white.withAlphaComponent(0.35)
     }
     
     func backgroundImage() -> UIImage {
-        return UIImage.init(named: "lightBackground")!
+        return UIImage.init(named: "light_bg1")!
     }
     
     func settingsBackgroundImage() -> UIImage {
-        return UIImage.init(named: "lightBackground")!
+        return UIImage.init(named: "light_bg2")!
+    }
+    
+    func mappedContactImage() -> UIImage {
+        return UIImage.init(named: "contact_black")!
+    }
+    
+    func notMappedContactImage() -> UIImage {
+        return UIImage.init(named: "contact_white")!.imageWithTintColor(notMappedTextColor())
+    }
+    
+    func removeContactImage() -> UIImage {
+        return UIImage.init(named: "removeCellButton")!.imageWithTintColor(mappedTextColor())
     }
     
     func statusBarStyle() -> UIStatusBarStyle {

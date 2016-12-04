@@ -27,6 +27,7 @@
 		3F3812181DE70B9E005B8EDC /* ThemesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3812171DE70B9E005B8EDC /* ThemesDataSourceTests.swift */; };
 		3F4EFD031DF07E6200F4B78D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4EFD021DF07E6200F4B78D /* Settings.storyboard */; };
 		3F4EFD051DF0869400F4B78D /* SettingsDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */; };
+		3F4EFD111DF2C95B00F4B78D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD101DF2C95B00F4B78D /* UIImage+Extensions.swift */; };
 		3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61931DE2E745000B06E5 /* AppDelegate.swift */; };
 		3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619A1DE2E745000B06E5 /* Assets.xcassets */; };
 		3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */; };
@@ -81,6 +82,7 @@
 		3F3812171DE70B9E005B8EDC /* ThemesDataSourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemesDataSourceTests.swift; sourceTree = "<group>"; };
 		3F4EFD021DF07E6200F4B78D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDomainModel.swift; sourceTree = "<group>"; };
+		3F4EFD101DF2C95B00F4B78D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		3FAC61901DE2E745000B06E5 /* Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dialer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC61931DE2E745000B06E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FAC619A1DE2E745000B06E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		3F38120D1DE6130B005B8EDC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3F4EFD101DF2C95B00F4B78D /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				3FAC620F1DE326E0000B06E5 /* MainModuleInterface.swift in Sources */,
 				3F32A9A81DED553F0009F462 /* ThemesDataSource.swift in Sources */,
 				3FAC62131DE326E0000B06E5 /* MainModuleDataSource.swift in Sources */,
+				3F4EFD111DF2C95B00F4B78D /* UIImage+Extensions.swift in Sources */,
 				3F32A9D41DED87DF0009F462 /* TabBarModuleAssembly.swift in Sources */,
 				3FAC62481DE4C99B000B06E5 /* MainModuleView.swift in Sources */,
 				3F32A99A1DEC8C3C0009F462 /* DarkTheme.swift in Sources */,
@@ -655,6 +659,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -671,7 +676,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -704,6 +709,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -714,7 +720,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

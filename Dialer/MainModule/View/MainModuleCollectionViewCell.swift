@@ -19,7 +19,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var index: UILabel!
     @IBOutlet weak var roundedView: UIView!
     @IBOutlet weak var actionButton: UIButton!
-    @IBOutlet weak var addImageView: UIImageView!
+    @IBOutlet weak var contactImageView: UIImageView!
     weak var cellDelegate : MainModuleCollectionViewCellDelegate?
     
     private var cellData : PhoneDomainModel?
@@ -36,22 +36,11 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
         name.text = data.mapped ? data.displayedName : NSLocalizedString("item_not_set_title_text", comment: "")
         phone.text = data.mapped ? data.phoneNumber : ""
         data.mapped ? configureCellAsMapped() : configureCellAsNotMapped()
-        
-        let mapped = data.mapped
-        
-        if isEditing {
-            if mapped {
-                setupActionButton()
-                name.isHidden = false
-                addImageView.isHidden = true
-            } else {
-                name.isHidden = true
-                addImageView.isHidden = false
-            }
-        } else {
-            name.isHidden = false
-            addImageView.isHidden = true
+        if isEditing && data.mapped {
+            setupActionButton()
         }
+        let theme = themesDataSource.currentTheme()
+        contactImageView.image = data.mapped ? theme.mappedContactImage() : theme.notMappedContactImage()
     }
     
     func setEditing(isEditing : Bool) {
@@ -80,7 +69,7 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     }
     
     func setupActionButton() {
-        let image = UIImage(named: removeMappingButtonImageName)
+        let image = themesDataSource.currentTheme().removeContactImage()
         actionButton.setImage(image, for: .normal)
         actionButton.setImage(image, for: .selected)
         actionButton.isHidden = false
@@ -95,8 +84,6 @@ class MainModuleCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         name.text = ""
         phone.text = ""
-        name.isHidden = false
-        addImageView.isHidden = true
         actionButton.isHidden = true
     }
     
