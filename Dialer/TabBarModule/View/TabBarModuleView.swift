@@ -49,6 +49,7 @@ final class TabBarModuleViewController: UITabBarController {
     func setupUI() {
         setupTabs()
         tabBar.barStyle = UIBarStyle.black
+        tabBar.isTranslucent = true
         tabBar.tintColor = UIColor.white
     }    
 }

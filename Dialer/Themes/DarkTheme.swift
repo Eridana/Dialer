@@ -10,16 +10,20 @@ import UIKit
 
 class DarkTheme: StyleInterface {
 
+    func topViewBackgroundColor() -> UIColor {
+        return UIColor.white.withAlphaComponent(0.3)
+    }
+    
     func collectionBackgroundColor() -> UIColor {
-        return UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.25)
+        return UIColor.clear
     }
     
     func mappedCellBackgroundColor() -> UIColor {
-        return UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.5)
+        return UIColor.white.withAlphaComponent(0.2)
     }
     
     func notMappedCellBackgroundColor() -> UIColor {
-        return UIColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 0.5)
+        return UIColor.white.withAlphaComponent(0.2)
     }
     
     func mappedTextColor() -> UIColor {
@@ -27,23 +31,39 @@ class DarkTheme: StyleInterface {
     }
     
     func notMappedTextColor() -> UIColor {
-        return UIColor.init(red: 66.0/255.0, green: 66.0/255.0, blue: 73.0/255.0, alpha: 1.0)
+        return UIColor.black
     }
     
     func mappedBorderColor() -> UIColor {
-        return UIColor.white
+        return UIColor.clear
     }
     
     func notMappedBorderColor() -> UIColor {
-        return UIColor.init(red: 66.0/255.0, green: 66.0/255.0, blue: 73.0/255.0, alpha: 1.0)
+        return UIColor.clear
+    }
+    
+    func tableHeaderColor() -> UIColor {
+        return UIColor.black.withAlphaComponent(0.1)
     }
     
     func backgroundImage() -> UIImage {
-        return UIImage.init(named: "darkBackground")!
+        return UIImage.init(named: "galaxy_bg1")!
     }
     
     func settingsBackgroundImage() -> UIImage {
-        return UIImage.init(named: "darkBackground")!
+        return UIImage.init(named: "galaxy_bg1")!
+    }
+    
+    func mappedContactImage() -> UIImage {
+        return UIImage.init(named: "contact_white")!
+    }
+    
+    func notMappedContactImage() -> UIImage {
+        return UIImage.init(named: "contact_black")!
+    }
+    
+    func removeContactImage() -> UIImage {
+        return UIImage.init(named: "removeCellButton")!
     }
     
     func statusBarStyle() -> UIStatusBarStyle {
@@ -51,7 +71,7 @@ class DarkTheme: StyleInterface {
     }
     
     func barStyle() -> UIBarStyle {
-        return .black
+        return .default
     }
     
     func identifier() -> ThemeIdentifier {

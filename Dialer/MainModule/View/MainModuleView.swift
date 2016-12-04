@@ -28,6 +28,11 @@ protocol MainModuleViewOutput: class {
     func userDidSelectContactChange()
 }
 
+private struct MainModuleViewControllerConstraints {
+    
+    static let cellWidth = 100.0
+    static let cellHeight = 100.0
+}
 
 // MARK: - View Controller
 final class MainModuleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
@@ -38,6 +43,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var topView: UIView!
     
+    var blurredEffectView : UIVisualEffectView?
     var output: MainModuleViewOutput!
     var dataSource = MainModuleCollectionViewDataSource()
     var themesDataSource = ThemesDataSource()
@@ -62,16 +68,26 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupTheme()
     }
     
     func setupUI() {
         setupCollectionView()
-        setupTheme()
         setupSegmentedControl()
         editButton.addTarget(self, action: #selector(editTapped), for: .touchUpInside)
     }
 
     func setupTheme() {
+        
+        if (blurredEffectView == nil) {
+            let blurEffect = UIBlurEffect(style: .light)
+            blurredEffectView = UIVisualEffectView(effect: blurEffect)
+            blurredEffectView?.frame = bgImageView.bounds
+            blurredEffectView?.alpha = 0.1
+            view.addSubview(blurredEffectView!)
+            view.sendSubview(toBack: blurredEffectView!)
+            view.sendSubview(toBack: bgImageView!)
+        }
         
         let theme = themesDataSource.currentTheme()
         
@@ -79,7 +95,7 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         editButton.setTitleColor(theme.mappedTextColor(), for: .normal)
         editButton.setTitleColor(theme.mappedTextColor(), for: .highlighted)
         themeSegmentedControl.tintColor = theme.mappedTextColor()
-        topView.backgroundColor = theme.collectionBackgroundColor()
+        topView.backgroundColor = theme.topViewBackgroundColor()
         collectionView.backgroundColor = theme.collectionBackgroundColor()
         UIApplication.shared.statusBarStyle = theme.statusBarStyle()
     }
@@ -131,16 +147,6 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
         collectionView.reloadData()
     }
     
-    // MARK : Size for cell
-    
-    func sizeForCell() -> CGSize {
-        let size = view.frame.size
-        let spacing = 4;
-        let kWidth = size.width / CGFloat(widthItemsCount) - CGFloat((widthItemsCount - 1) * spacing)
-        let kHeight = (size.height - 45) / CGFloat(heightItemsCount) - CGFloat((heightItemsCount - 1) * (spacing * 2))
-        return CGSize(width: CGFloat(kWidth), height: CGFloat(kHeight))
-    }
-    
     // MARK : Events
     
     func editTapped() {
@@ -170,7 +176,8 @@ final class MainModuleViewController: UIViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return sizeForCell()
+        return CGSize(width: CGFloat(MainModuleViewControllerConstraints.cellWidth),
+                     height: CGFloat(MainModuleViewControllerConstraints.cellHeight))
     }
     
     // MARK : MainModuleCollectionViewCellDelegate

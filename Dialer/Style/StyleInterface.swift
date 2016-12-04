@@ -15,6 +15,7 @@ enum ThemeIdentifier : String {
 
 protocol StyleInterface: class {
 
+    func topViewBackgroundColor() -> UIColor
     func collectionBackgroundColor() -> UIColor
     func mappedCellBackgroundColor() -> UIColor
     func notMappedCellBackgroundColor() -> UIColor
@@ -22,8 +23,12 @@ protocol StyleInterface: class {
     func notMappedTextColor() -> UIColor
     func mappedBorderColor() -> UIColor
     func notMappedBorderColor() -> UIColor
+    func tableHeaderColor() -> UIColor
     func backgroundImage() -> UIImage
     func settingsBackgroundImage() -> UIImage
+    func mappedContactImage() -> UIImage
+    func notMappedContactImage() -> UIImage
+    func removeContactImage() -> UIImage
     func statusBarStyle() -> UIStatusBarStyle
     func barStyle() -> UIBarStyle
     func identifier() -> ThemeIdentifier

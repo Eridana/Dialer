@@ -57,8 +57,6 @@ final class SettingsModuleViewController: UITableViewController {
         output.moduleDidLoad()
         
         localize()
-        setTheme()
-        
         tableView.isScrollEnabled = false
         
         arrayOfSelections?.append(firstThenLastSwitch.isOn)
@@ -74,16 +72,21 @@ final class SettingsModuleViewController: UITableViewController {
         seeOnGithubButton.setTitle(NSLocalizedString("settings_see_on_github_title", comment: ""), for: .highlighted)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setTheme()
+    }
+    
     func setTheme() {
         if blurredEffectView == nil {
             
             backgroundImageView = UIImageView.init(frame: view.frame)
             backgroundImageView?.contentMode = .scaleAspectFill
-            backgroundImageView?.alpha = 0.9
             
             let blurEffect = UIBlurEffect(style: .light)
             blurredEffectView = UIVisualEffectView(effect: blurEffect)
             blurredEffectView?.frame = view.bounds
+            blurredEffectView?.alpha = 0.1
             
             view.addSubview(blurredEffectView!)
             view.sendSubview(toBack: blurredEffectView!)
@@ -95,7 +98,6 @@ final class SettingsModuleViewController: UITableViewController {
         let theme = themesDataSource.currentTheme()
         tableView.backgroundColor = theme.collectionBackgroundColor()
         backgroundImageView?.image = theme.settingsBackgroundImage()
-        //navigationController?.navigationBar.barStyle = theme.barStyle()
         firstThenLastLabel.textColor = theme.mappedTextColor()
         lastThenFirstLabel.textColor = theme.mappedTextColor()
         firstOnlyLabel.textColor = theme.mappedTextColor()
@@ -104,33 +106,17 @@ final class SettingsModuleViewController: UITableViewController {
         
         for uiswitch in switchesArray {
             uiswitch.tintColor = theme.mappedTextColor()
+            uiswitch.onTintColor = theme.notMappedTextColor()
         }
+        
+        self.tableView.reloadData()
     }
     
     // MARK: Actions
-    
-    
-    // MARK: UITableViewDataSource
-    /*
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == 1 {
-            return versionString()
-        }
-        return ""
-    }*/
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.white.withAlphaComponent(0.1)
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return NSLocalizedString("settings_display_settings_title", comment: "").uppercased()
-        }
-        return NSLocalizedString("settings_about_app_title", comment: "").uppercased()
-    }*/
-    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -152,10 +138,10 @@ final class SettingsModuleViewController: UITableViewController {
                                           height: SettingsModuleViewControllerConstants.sectionHeaderHeight))
         
         label.text = title
-        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 11)
-        label.textColor = UIColor.white
+        label.font = UIFont.init(name: "HelveticaNeue-Light", size: 12)
+        label.textColor = themesDataSource.currentTheme().mappedTextColor()
         sectionView.addSubview(label)
-        sectionView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        sectionView.backgroundColor = themesDataSource.currentTheme().tableHeaderColor()
         return sectionView
     }
     
@@ -171,9 +157,9 @@ final class SettingsModuleViewController: UITableViewController {
         
         label.text = section == 1 ? versionString() : ""
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 13)
-        label.textColor = UIColor.white
+        label.textColor = themesDataSource.currentTheme().mappedTextColor()
         sectionView.addSubview(label)
-        sectionView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        sectionView.backgroundColor = themesDataSource.currentTheme().tableHeaderColor()
         return sectionView
     }
     
