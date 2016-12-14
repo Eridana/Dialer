@@ -14,7 +14,7 @@ final class SettingsModuleController: SettingsModuleModuleInput {
     var router: SettingsModuleRouterInput!
     weak var view: SettingsModuleViewInput!
     weak var output: SettingsModuleModuleOutput?
-
+    
     // MARK: - Module Input
     func setupDelegate(output: SettingsModuleModuleOutput) {
         self.output = output
@@ -30,6 +30,10 @@ extension SettingsModuleController: SettingsModuleInteractorOutput {
 extension SettingsModuleController: SettingsModuleViewOutput {
     
     func moduleDidLoad() {
-        //
+        
+    }
+    
+    func setNameDisplayStyle(_ style: NameDisplayStyle) {
+        interactor.setNameDisplayStyle(style : style)
     }
 }

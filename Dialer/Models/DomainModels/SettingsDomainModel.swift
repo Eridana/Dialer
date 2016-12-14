@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum NameDisplayType {
-    case firstThenLast
-    case lastThenFirst
-    case firstNameOnly
-}
-
 struct SettingsDomainModel {
-    var nameDisplayType : NameDisplayType?
+    var style : NameDisplayStyle?
 }

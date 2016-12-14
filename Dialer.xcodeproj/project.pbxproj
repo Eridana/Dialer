@@ -28,6 +28,8 @@
 		3F4EFD031DF07E6200F4B78D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F4EFD021DF07E6200F4B78D /* Settings.storyboard */; };
 		3F4EFD051DF0869400F4B78D /* SettingsDomainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */; };
 		3F4EFD111DF2C95B00F4B78D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD101DF2C95B00F4B78D /* UIImage+Extensions.swift */; };
+		3F4EFD141DF3FDA900F4B78D /* SettingsDataSourceUserDefaultsBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD131DF3FDA900F4B78D /* SettingsDataSourceUserDefaultsBased.swift */; };
+		3F4EFD161DF3FDBD00F4B78D /* SettingsDataSourceInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4EFD151DF3FDBD00F4B78D /* SettingsDataSourceInterface.swift */; };
 		3FAC61941DE2E745000B06E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC61931DE2E745000B06E5 /* AppDelegate.swift */; };
 		3FAC619B1DE2E745000B06E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619A1DE2E745000B06E5 /* Assets.xcassets */; };
 		3FAC619E1DE2E745000B06E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FAC619C1DE2E745000B06E5 /* LaunchScreen.storyboard */; };
@@ -83,6 +85,8 @@
 		3F4EFD021DF07E6200F4B78D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3F4EFD041DF0869400F4B78D /* SettingsDomainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDomainModel.swift; sourceTree = "<group>"; };
 		3F4EFD101DF2C95B00F4B78D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		3F4EFD131DF3FDA900F4B78D /* SettingsDataSourceUserDefaultsBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSourceUserDefaultsBased.swift; sourceTree = "<group>"; };
+		3F4EFD151DF3FDBD00F4B78D /* SettingsDataSourceInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDataSourceInterface.swift; sourceTree = "<group>"; };
 		3FAC61901DE2E745000B06E5 /* Dialer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dialer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAC61931DE2E745000B06E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FAC619A1DE2E745000B06E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,6 +221,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		3F4EFD121DF3FD9C00F4B78D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3F4EFD151DF3FDBD00F4B78D /* SettingsDataSourceInterface.swift */,
+				3F4EFD131DF3FDA900F4B78D /* SettingsDataSourceUserDefaultsBased.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		3FAC61871DE2E744000B06E5 = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +355,7 @@
 		3FAC622F1DE48531000B06E5 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				3F4EFD121DF3FD9C00F4B78D /* Settings */,
 				3F32A98B1DEC5BA40009F462 /* PhoneNumber */,
 				3F32A9A51DED553F0009F462 /* Themes */,
 			);
@@ -363,8 +377,8 @@
 		451478EACCCF7FB5C6A9F211 /* SettingsModule */ = {
 			isa = PBXGroup;
 			children = (
-				E7A5988329F94886C3DB6B18 /* SettingsModuleInterface.swift */,
 				D370ADD6A82803DD0F2F000D /* SettingsModuleAssembly.swift */,
+				E7A5988329F94886C3DB6B18 /* SettingsModuleInterface.swift */,
 				DBF5333533DBD870725C08CB /* Module */,
 				1435B07CF03467741AD4DB04 /* View */,
 			);
@@ -583,6 +597,8 @@
 				3FAC61FA1DE325B9000B06E5 /* PhoneDomainModel.swift in Sources */,
 				3F32A99C1DEC8DC20009F462 /* LightTheme.swift in Sources */,
 				3F32A9D61DED87DF0009F462 /* TabBarModuleView.swift in Sources */,
+				3F4EFD161DF3FDBD00F4B78D /* SettingsDataSourceInterface.swift in Sources */,
+				3F4EFD141DF3FDA900F4B78D /* SettingsDataSourceUserDefaultsBased.swift in Sources */,
 				3F32A9971DEC8B250009F462 /* StyleInterface.swift in Sources */,
 				28D808D62E4F28F1E54D802D /* SettingsModuleInterface.swift in Sources */,
 				B301E2E19693B140567C7E9C /* SettingsModuleAssembly.swift in Sources */,

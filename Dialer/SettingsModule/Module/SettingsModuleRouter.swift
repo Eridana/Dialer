@@ -12,12 +12,12 @@ import UIKit
 // MARK: Interface
 
 protocol SettingsModuleRouterInput: class {
-  
+
 }
 
 // MARK: - Router
 
 final class SettingsModuleRouter: SettingsModuleRouterInput {
     weak var view: SettingsModuleViewController!
-    
+
 }

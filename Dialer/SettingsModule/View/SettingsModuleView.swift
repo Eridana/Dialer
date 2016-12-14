@@ -17,12 +17,15 @@ protocol SettingsModuleViewInput: class {
 
 protocol SettingsModuleViewOutput: class {
     func moduleDidLoad()
+    func setNameDisplayStyle(_ style : NameDisplayStyle)
 }
 
 private struct SettingsModuleViewControllerConstants {
     
     static let sectionHeaderHeight: CGFloat = 35.0
-
+    static let sectionLabelLeading: CGFloat = 10.0
+    static let sectionLabelTop: CGFloat = 4.0
+    static let sectionFooterLabelTop: CGFloat = 0.0
 }
 
 // MARK: - View Controller
@@ -45,7 +48,6 @@ final class SettingsModuleViewController: UITableViewController {
     var backgroundImageView : UIImageView?
     var blurredEffectView  : UIVisualEffectView?
     var themesDataSource = ThemesDataSource()
-    var arrayOfSelections : [Bool]?
     
     // MARK: - Life cycle
     func configure() {
@@ -59,9 +61,9 @@ final class SettingsModuleViewController: UITableViewController {
         localize()
         tableView.isScrollEnabled = false
         
-        arrayOfSelections?.append(firstThenLastSwitch.isOn)
-        arrayOfSelections?.append(lastThenFirstSwitch.isOn)
-        arrayOfSelections?.append(firstOnlySwitch.isOn)
+        firstOnlySwitch.addTarget(self, action: #selector(showNameOnlyDidChanged(sender:)), for: .valueChanged)
+        firstThenLastSwitch.addTarget(self, action: #selector(showNameThenSurnameDidChanged(sender:)), for: .valueChanged)
+        lastThenFirstSwitch.addTarget(self, action: #selector(showSurnameThenNameDidChanged(sender:)), for: .valueChanged)
     }
     
     func localize() {
@@ -112,7 +114,65 @@ final class SettingsModuleViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func setDefaultSwitchesConfiguration() {
+        firstThenLastSwitch.isOn = true
+        lastThenFirstSwitch.isOn = false
+        firstOnlySwitch.isOn = false
+    }
+    
     // MARK: Actions
+    
+    func showNameThenSurnameDidChanged(sender : UISwitch) {
+        configureSwitchesWith(sender: sender)
+        if sender.isOn {
+            output.setNameDisplayStyle(.firstThenLast)
+        }
+    }
+    
+    func showSurnameThenNameDidChanged(sender : UISwitch) {
+        configureSwitchesWith(sender: sender)
+        if sender.isOn {
+            output.setNameDisplayStyle(.lastThenFirst)
+        }
+    }
+    
+    func showNameOnlyDidChanged(sender : UISwitch) {
+        configureSwitchesWith(sender: sender)
+        if sender.isOn {
+            output.setNameDisplayStyle(.firstNameOnly)
+        }
+    }
+    
+    func configureSwitchesWith(sender : UISwitch) {
+        
+        if sender.isOn {
+            for uiswitch in switchesArray {
+                if uiswitch != sender {
+                    uiswitch.isOn = false
+                }
+            }
+        } else {
+            setDefaultSwitchesConfiguration()
+        }
+        
+    }
+    
+    @IBAction func showGithubCode(_ sender: UIButton) {
+        
+        let urlString = valueFromPlistForKey(key : "Github") as? String
+        
+        if let urlAddress = urlString {
+            if let url = URL(string: urlAddress), UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler:nil)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+        }
+    }
+    
+    // MARK: UITableView
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.white.withAlphaComponent(0.1)
@@ -120,24 +180,17 @@ final class SettingsModuleViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        var title = ""
-        
-        if section == 0 {
-            title = NSLocalizedString("settings_display_settings_title", comment: "").uppercased()
-        }
-        else {
-            title = NSLocalizedString("settings_about_app_title", comment: "").uppercased()
-        }
-        
-        let sectionView = UIView(frame: CGRect(x: 0, y: 0,
+        let sectionView = UIView(frame: CGRect(x: 0,
+                                               y: 0,
                                                width: view.frame.size.width,
                                                height: SettingsModuleViewControllerConstants.sectionHeaderHeight))
         
-        let label = UILabel(frame: CGRect(x: 10, y: 4,
+        let label = UILabel(frame: CGRect(x: SettingsModuleViewControllerConstants.sectionLabelLeading,
+                                          y: SettingsModuleViewControllerConstants.sectionLabelTop,
                                           width: view.frame.size.width,
                                           height: SettingsModuleViewControllerConstants.sectionHeaderHeight))
         
-        label.text = title
+        label.text = titleForHeaderSection(section : section)
         label.font = UIFont.init(name: "HelveticaNeue-Light", size: 12)
         label.textColor = themesDataSource.currentTheme().mappedTextColor()
         sectionView.addSubview(label)
@@ -147,11 +200,13 @@ final class SettingsModuleViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        let sectionView = UIView(frame: CGRect(x: 0, y: 0,
+        let sectionView = UIView(frame: CGRect(x: 0,
+                                               y: 0,
                                                width: view.frame.size.width,
                                                height: SettingsModuleViewControllerConstants.sectionHeaderHeight))
         
-        let label = UILabel(frame: CGRect(x: 10, y: 0,
+        let label = UILabel(frame: CGRect(x: SettingsModuleViewControllerConstants.sectionLabelLeading,
+                                          y: SettingsModuleViewControllerConstants.sectionFooterLabelTop,
                                           width: view.frame.size.width,
                                           height: SettingsModuleViewControllerConstants.sectionHeaderHeight))
         
@@ -168,6 +223,24 @@ final class SettingsModuleViewController: UITableViewController {
     }
     
     // MARK: Other
+    
+    func titleForHeaderSection(section : Int) -> String {
+        let title = section == 0 ?
+            NSLocalizedString("settings_display_settings_title", comment: "") :
+            NSLocalizedString("settings_about_app_title", comment: "")
+        return title.uppercased()
+    }
+    
+    func valueFromPlistForKey(key : String) -> Any? {
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            if let dictionary = NSDictionary(contentsOfFile: path) as? [String: Any] {
+                if let value = dictionary[key] {
+                    return value
+                }
+            }
+        }
+        return nil
+    }
     
     func versionString() -> String {
         

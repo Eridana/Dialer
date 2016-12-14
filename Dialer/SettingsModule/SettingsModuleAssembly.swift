@@ -19,9 +19,12 @@ final class SettingsModuleAssembly
 		let interactor = SettingsModuleInteractor()
 		let controller = SettingsModuleController()
 		let router = SettingsModuleRouter()
+        
+        let settingsDataSource = SettingsDataSourceUserDefaultsBased(withDefaultsKey: "settings")
 
 		interactor.output = controller
-
+        interactor.settingsDataSource = settingsDataSource
+        
 		controller.view = view
 		controller.interactor = interactor
 		controller.router = router
