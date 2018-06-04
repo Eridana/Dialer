@@ -10,22 +10,24 @@ import UIKit
 
 extension UIImage {
 
-    func imageWithTintColor(_ tintColor: UIColor) -> UIImage {
+    func imageWithTintColor(_ tintColor: UIColor) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        let context = UIGraphicsGetCurrentContext()
-        context!.translateBy(x: 0, y: self.size.height)
-        context!.scaleBy(x: 1.0, y: -1.0)
-        context!.setBlendMode(CGBlendMode.normal)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.setBlendMode(CGBlendMode.normal)
         let rect = CGRect(x:0, y:0, width:self.size.width, height:self.size.height)
-        context!.clip(to: rect, mask: self.cgImage!)
+        context.clip(to: rect, mask: self.cgImage!)
         tintColor.setFill()
-        context!.fill(rect)
+        context.fill(rect)
         let returnedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return returnedImage!
+        return returnedImage
     }
 
-    func imageWithAlpha(_ alpha: Float) -> UIImage {
+    func imageWithAlpha(_ alpha: Float) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.size, false, 0.0);
         if let context = UIGraphicsGetCurrentContext() {
             let rect = CGRect(x:0, y:0, width:self.size.width, height:self.size.height)
@@ -37,6 +39,6 @@ extension UIImage {
         }
         let returnedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return returnedImage!
+        return returnedImage
     }
 }

@@ -59,11 +59,11 @@ class LightTheme: StyleInterface {
     }
     
     func notMappedContactImage() -> UIImage {
-        return UIImage.init(named: "contact_white")!.imageWithTintColor(notMappedTextColor())
+        return UIImage.init(named: "contact_white")?.imageWithTintColor(notMappedTextColor()) ?? UIImage()
     }
     
     func removeContactImage() -> UIImage {
-        return UIImage.init(named: "removeCellButton")!.imageWithTintColor(mappedTextColor())
+        return UIImage.init(named: "removeCellButton")?.imageWithTintColor(mappedTextColor()) ?? UIImage()
     }
     
     func statusBarStyle() -> UIStatusBarStyle {
