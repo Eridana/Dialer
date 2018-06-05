@@ -291,7 +291,8 @@ extension MainModuleViewController: MainModuleViewInput {
     }
     
     func callPhoneNumber(number: String) {
-        if let url = URL(string: "telprompt://\(number.replacingOccurrences(of: " ", with: ""))"), UIApplication.shared.canOpenURL(url) {
+        let num = number.components(separatedBy: .whitespaces).joined().replacingOccurrences(of: "+", with: "")
+        if let url = URL(string: "tel://" + num) {
             if #available(iOS 10, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler:nil)
             } else {
